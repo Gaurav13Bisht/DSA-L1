@@ -15,6 +15,8 @@ public class Main {
         primesTillN();
         fibonacciTillN();
         digitsInNum();
+        reverseNum();
+        
     }
 
 
@@ -110,7 +112,16 @@ public class Main {
     }
 
 
+    public static void reverseNum() {
 
+        int num = scn.nextInt();
+
+        while(num != 0){
+              int rem = num%10;
+              System.out.println(rem);
+              num = num/10;
+        }
+    }
 
 
 
