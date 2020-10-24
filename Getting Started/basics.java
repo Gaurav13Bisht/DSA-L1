@@ -13,6 +13,7 @@ public class Main {
 
         primeCheck();
         primesTillN();
+        fibonacciTillN();
     }
 
     public static void primeCheck() {
@@ -56,4 +57,58 @@ public class Main {
                System.out.println(i);
        }
    }
+
+   public static void fibonacciTillN(){
+
+      int n = scn.nextInt();
+
+      /*  MY APPROACH NAIVE
+
+        int prev = 0;
+      int f1 = 0, f2 = 1;
+      System.out.println(f1);
+      System.out.println(f2);
+      for(int i = 3 ; i <= n ; i++ ){
+
+         int current = f1 + f2;
+         System.out.println(current);
+         f1 = f2;
+         f2 = current;
+      */
+
+
+       // SIR's APPROACH
+       int a = 0, b = 1, c;
+       for(int i = 0 ; i < n ; i++ ){
+
+               System.out.println(a);
+               c = a + b;
+               a = b;
+               b = c;
+
+      }
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
