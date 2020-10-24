@@ -16,7 +16,8 @@ public class Main {
         fibonacciTillN();
         digitsInNum();
         reverseNum();
-        
+        inverseNum();
+
     }
 
 
@@ -123,6 +124,22 @@ public class Main {
         }
     }
 
+
+    public static void inverseNum(){
+
+        int num = scn.nextInt();
+        int n1 = 0, rem, sum = 0;
+
+        while (num != 0) {
+           n1++;
+           rem = num % 10;
+           sum += n1 * ((int)Math.pow(10, rem - 1));
+           num /= 10;
+
+        }
+        System.out.print(sum);
+
+    }
 
 
 
