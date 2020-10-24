@@ -2,20 +2,21 @@ import java.util.*;
 
 public class Main {
     static Scanner scn = new Scanner(System.in);
-    
+
     public static void main(String[] args) {
         solved();
        //Unsolved();
 
     }
-    
+
     public static void solved() {
-        
+
         primeCheck();
+        primesTillN();
     }
-    
+
     public static void primeCheck() {
-    
+
         int t = scn.nextInt();
         for (int i = 1; i <= t; i++) {
 
@@ -36,4 +37,23 @@ public class Main {
 
 
     }
+
+    public static void primesTillN() {
+
+       int low = scn.nextInt();
+       int high = scn.nextInt();
+
+       for (int i = low; i <= high; i++) {
+
+           int Notprime = 0;
+           for (int j = 2; j * j <= i; j++)
+               if (i % j == 0) {
+                   Notprime++;
+                   break;
+               }
+
+           if (Notprime == 0)
+               System.out.println(i);
+       }
+   }
 }
