@@ -14,7 +14,9 @@ public class Main {
         primeCheck();
         primesTillN();
         fibonacciTillN();
+        digitsInNum();
     }
+
 
     public static void primeCheck() {
 
@@ -39,6 +41,7 @@ public class Main {
 
     }
 
+
     public static void primesTillN() {
 
        int low = scn.nextInt();
@@ -57,6 +60,7 @@ public class Main {
                System.out.println(i);
        }
    }
+
 
    public static void fibonacciTillN(){
 
@@ -87,8 +91,23 @@ public class Main {
                b = c;
 
       }
-   }
+    }
 
+
+    public static void digitsInNum() {
+
+        int n = scn.nextInt();
+        int digits = 0;
+        if(n != 0)
+         while(n>=1)
+      {
+         digits++;
+         n/=10;
+      }
+
+      System.out.println(digits);
+
+    }
 
 
 
