@@ -17,6 +17,7 @@ public class Main {
         digitsInNum();
         reverseNum();
         inverseNum();
+        rotateNum();
 
     }
 
@@ -140,6 +141,66 @@ public class Main {
         System.out.print(sum);
 
     }
+
+
+    public static void rotateNum() {
+
+        int n = scn.nextInt();
+        int k = scn.nextInt();
+        int n1 = n, digits = 0;
+
+           while (n1 >= 1) {
+               digits++;
+               n1 /= 10;}
+           k %= digits;
+
+           /* MY APPROACH!!!!!!!!!!!!
+           int mult = (int) Math.pow(10, digits - 1);
+           if (k > 0)
+            for (int i = 1; i <= k; i++) {
+
+               if (k % digits == 0)
+                   break;
+               else {
+                   int rem = n % 10;
+                   n /= 10;
+                   n += rem * mult;
+                  }
+             }
+
+           else
+           for (int i = 1; i <= -k; i++) {
+
+               if (-k % digits == 0)
+                   break;
+               else {
+                   int quot = n / mult;
+                   n %= mult;
+                   n = n * 10 + quot;
+               }
+           }
+
+           System.out.print(n);
+           */
+
+           //SIR's APPROACH!!!!!!!!!!!!!!!!
+
+           if(k<0){
+             k = digits - (-k);
+           }
+
+           int forSplit = (int)Math.pow(10,k);
+           int forAdd   = (int)Math.pow(10, digits - k);
+
+           int rem = n % forSplit;
+           int quot = n / forSplit;
+
+           n = quot + rem * forAdd;
+
+           System.out.print(n);
+
+
+   }
 
 
 
