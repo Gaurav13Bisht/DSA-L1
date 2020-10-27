@@ -18,6 +18,8 @@ public class Main {
         reverseNum();
         inverseNum();
         rotateNum();
+        gcdLcm();
+        primeFactors();
 
     }
 
@@ -185,23 +187,68 @@ public class Main {
 
            //SIR's APPROACH!!!!!!!!!!!!!!!!
 
-           if(k<0){
+       if(k<0){
              k = digits - (-k);
-           }
+       }
 
-           int forSplit = (int)Math.pow(10,k);
-           int forAdd   = (int)Math.pow(10, digits - k);
+       int forSplit = (int)Math.pow(10,k);
+       int forAdd   = (int)Math.pow(10, digits - k);
 
-           int rem = n % forSplit;
-           int quot = n / forSplit;
+       int rem = n % forSplit;
+       int quot = n / forSplit;
 
-           n = quot + rem * forAdd;
+       n = quot + rem * forAdd;
 
-           System.out.print(n);
+       System.out.print(n);
 
 
    }
 
+
+   public static void gcdLcm() {
+       int n1 = scn.nextInt();
+       int n2 = scn.nextInt();
+
+       int divd = n1;
+       int divs = n2;
+
+       while( divd % divs != 0){
+
+           int rem = divd % divs;
+           divd = divs;
+           divs = rem;
+
+       }
+
+       int gcd = divs;
+
+       int lcm = (n1 * n2)/gcd;   // lcm*gcd = n1*n2
+
+       System.out.println(gcd);
+       System.out.println(lcm);
+   }
+
+
+   public static void primeFactors() {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int rem, i = 2;
+        if (n == 1)
+            System.out.print(1);
+        else
+            while (n != 1) {
+                rem = n % i;
+                if (rem == 0) {
+                    n /= i;
+                    System.out.print(i + " ");
+                } else
+                    i++;
+            }
+
+    }
+
+
+    
 
 
 
