@@ -21,6 +21,7 @@ public class Main {
         gcdLcm();
         primeFactors();
         pythagoreanTriplets();
+        benjaminBulbs();
 
     }
 
@@ -281,6 +282,18 @@ public class Main {
                 System.out.print(result);
 
     }
+
+
+    public static void benjaminBulbs() {
+
+        int n = scn.nextInt();
+
+        for(int i = 1; i * i <= n ; i++) {
+                System.out.println(i * i);
+
+        }
+
+   }
 
 
 
