@@ -20,6 +20,7 @@ public class Main {
         rotateNum();
         gcdLcm();
         primeFactors();
+        pythagoreanTriplets();
 
     }
 
@@ -206,6 +207,7 @@ public class Main {
 
 
    public static void gcdLcm() {
+
        int n1 = scn.nextInt();
        int n2 = scn.nextInt();
 
@@ -230,7 +232,7 @@ public class Main {
 
 
    public static void primeFactors() {
-        Scanner scn = new Scanner(System.in);
+
         int n = scn.nextInt();
         int rem, i = 2;
         if (n == 1)
@@ -248,7 +250,39 @@ public class Main {
     }
 
 
-    
+    public static void pythagoreanTriplets() {
+
+         int n1 = scn.nextInt();
+         int n2 = scn.nextInt();
+         int n3 = scn.nextInt();
+
+         if (n1 > n2) {
+             int temp = n2;
+             n2 = n1;
+             n1 = temp;
+         }
+         if (n2 > n3) {
+             int temp = n3;
+             n3 = n2;
+             n2 = temp;
+
+         }
+
+        /* if (n3 * n3 == n2 * n2 + n1 * n1)
+            System.out.print("true");
+        else
+            System.out.print("false");
+        */
+
+        //USING BOOLEAN dataType
+
+             boolean result = ((n3 * n3) == (n2 * n2 + n1 * n1));
+
+                System.out.print(result);
+
+    }
+
+
 
 
 
