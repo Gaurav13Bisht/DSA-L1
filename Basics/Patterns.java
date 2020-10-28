@@ -21,9 +21,9 @@ public class Main {
         /*    5
               *
               * *
-              * *	*
-              *	*	*	*
-              * *	*	*	*
+              * * *
+              *	* *	*
+              * * *	* *
         */
 
           int n = scn.nextInt();
