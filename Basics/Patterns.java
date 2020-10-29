@@ -25,8 +25,8 @@ public class Main {
               *
               * *
               * * *
-              *	* *	*
-              * * *	* *
+              *	* * *
+              * * * * *
         */
 
           int n = scn.nextInt();
@@ -64,11 +64,11 @@ public class Main {
 
      public static void pattern3() {
          /*    5
-                        *
-                      *	*
-                    *	*	*
-                  *	*	*	*
-                *	*	*	*	*
+    	                 	        	*	
+					*	*	
+				*	*	*	
+			*	*	*	*	
+		*	*	*	*	*	
         */
 
           int n = scn.nextInt();
@@ -88,12 +88,12 @@ public class Main {
 
       public static void pattern4() {
        /*   5
-            *	*	*	*	*
-	            * *	*	*
-		            * *	*
-			            *	*
-				            *
-       */
+     	      *		*	*	*	*	
+			*	*	*	*	
+				*	*	*	
+					*	*	
+						*
+       */	
 
 
           int n = scn.nextInt();
@@ -128,11 +128,11 @@ public class Main {
 
      public static void pattern5() {
        /*  5
-                  *
-                *	*	*
-              *	*	*	*	*
-                *	*	*
-                  *
+                	*	
+		*	*	*	
+	*	*	*	*	*	
+		*	*	*	
+			*	
       */
         int n = scn.nextInt();
         int st = 1 , sp = n/2;
