@@ -16,6 +16,7 @@ public class Main {
         pattern4();
         pattern5();
         pattern6();
+        pattern7();
 
 
     }
@@ -188,6 +189,20 @@ public class Main {
 
 
       }
+
+
+      public static void pattern7() {
+
+          int n = scn.nextInt();
+          int sp = 0;
+          for (int i = 1; i <= n; i++) {
+              for (int j = 1; j <= sp; j++)
+                  System.out.print("	");
+
+              System.out.println("*");
+                sp++;
+          }
+     }
 
 
 
