@@ -15,6 +15,7 @@ public class Main {
         pattern3();
         pattern4();
         pattern5();
+        pattern6();
 
 
     }
@@ -64,11 +65,11 @@ public class Main {
 
      public static void pattern3() {
          /*    5
-    	                 	        	*	
-					*	*	
-				*	*	*	
-			*	*	*	*	
-		*	*	*	*	*	
+    	                 	        	*
+					*	*
+				*	*	*
+			*	*	*	*
+		*	*	*	*	*
         */
 
           int n = scn.nextInt();
@@ -88,12 +89,12 @@ public class Main {
 
       public static void pattern4() {
        /*   5
-     	      *		*	*	*	*	
-			*	*	*	*	
-				*	*	*	
-					*	*	
+     	      *		*	*	*	*
+			*	*	*	*
+				*	*	*
+					*	*
 						*
-       */	
+       */
 
 
           int n = scn.nextInt();
@@ -128,11 +129,11 @@ public class Main {
 
      public static void pattern5() {
        /*  5
-                	*	
-		*	*	*	
-	*	*	*	*	*	
-		*	*	*	
-			*	
+                	*
+		*	*	*
+	*	*	*	*	*
+		*	*	*
+			*
       */
         int n = scn.nextInt();
         int st = 1 , sp = n/2;
@@ -155,6 +156,35 @@ public class Main {
                 System.out.println();
 
              }
+
+
+      }
+
+
+      public static void pattern6() {
+
+          int n = scn.nextInt();
+          int st = n / 2 + 1, sp = 1;
+          for (int i = 1; i <= n; i++) {
+              for (int j = 1; j <= st; j++)
+                  System.out.print("*	");
+
+            for (int j = 1; j <= sp; j++)
+                System.out.print("	");
+
+            for (int j = 1; j <= st; j++)
+                System.out.print("*	");
+
+
+            System.out.println();
+            if (i <= n / 2) {
+                st--;
+                sp += 2;
+            } else {
+                st++;
+                sp -= 2;
+            }
+          }
 
 
       }
