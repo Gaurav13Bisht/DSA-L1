@@ -18,6 +18,7 @@ public class Main {
         pattern6();
         pattern7();
         pattern8();
+        pattern9();
 
 
     }
@@ -221,7 +222,27 @@ public class Main {
      }
 
 
-     
+     public static void pattern9() {
+
+          int n = scn.nextInt(), st = 0;
+          for (int i = 1; i <= n; i++) {
+              for (int j = 1; j <= n; j++)
+                  if (i == j || i + j == n + 1) {
+                      System.out.print("*	");
+                      st++;
+                      if (st == 2)
+                          break;
+
+                }
+                else
+                  System.out.print("	");
+
+                  System.out.println();
+
+
+         }
+     }
+
 
 
 
