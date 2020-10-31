@@ -20,6 +20,7 @@ public class Main {
         pattern8();
         pattern9();
         pattern10();
+        pattern11();
 
 
     }
@@ -274,7 +275,24 @@ public class Main {
      }
 
 
-     
+     public static void pattern11() {
+
+          int n = scn.nextInt(), prin = 0;
+          for(int i = 1; i<= n ;i++){
+            for(int j = 1 ; j<=i ; j ++){
+              prin++;
+              System.out.print(prin + "	");
+
+            }
+            System.out.println();
+          }
+
+    }
+
+    
+
+
+
 
 
 
