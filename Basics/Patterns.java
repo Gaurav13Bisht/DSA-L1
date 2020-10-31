@@ -167,6 +167,14 @@ public class Main {
 
 
       public static void pattern6() {
+	 /*  5
+             *	*  *	*  *  *	
+	     *	*	   *  *	
+	     *		      *	
+	     *	*          *  *	
+	     *	*  *    *  *  *
+         */
+	      
 
           int n = scn.nextInt();
           int st = n / 2 + 1, sp = 1;
@@ -196,7 +204,13 @@ public class Main {
 
 
       public static void pattern7() {
-
+	   /*   5
+	        *	
+		    *	
+		 	*	
+			    *	
+				*	
+           */
           int n = scn.nextInt();
           int sp = 0;
           for (int i = 1; i <= n; i++) {
@@ -210,6 +224,13 @@ public class Main {
 
 
      public static void pattern8() {
+	/*  5
+	    					*	
+					*		
+				*			
+			*				
+		*
+	*/
 
           int n = scn.nextInt();
           int sp = n - 1;
@@ -225,7 +246,13 @@ public class Main {
 
 
      public static void pattern9() {
-
+	/*   5
+	   *				*	
+		*		*		
+			*			
+	 	*        	*		
+	   *				*	
+	*/
           int n = scn.nextInt(), st = 0;
           for (int i = 1; i <= n; i++) {
               for (int j = 1; j <= n; j++)
@@ -247,7 +274,14 @@ public class Main {
 
 
      public static void pattern10() {
-
+        /*   5
+		     	*	
+		*		*	
+	*				*	
+		*		*	
+			*	
+	*/
+	     
         int n = scn.nextInt();
         int os = n / 2, is = -1;
         for (int i = 1; i <= n; i++) {
@@ -276,6 +310,13 @@ public class Main {
 
 
      public static void pattern11() {
+	/*   5
+                1	
+		2	3	
+		4	5	6	
+		7	8	9	10	
+		11	12	13	14	15
+	*/
 
           int n = scn.nextInt(), prin = 0;
           for(int i = 1; i<= n ;i++){
