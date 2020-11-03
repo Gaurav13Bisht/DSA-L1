@@ -22,6 +22,7 @@ public class Main {
         pattern10();
         pattern11();
         pattern12();
+        pattern13();
 
 
     }
@@ -349,7 +350,29 @@ public class Main {
     }
 
 
-    
+    public static void pattern13() {
+
+          Scanner scn = new Scanner(System.in);
+          int n = scn.nextInt();
+          //using combination formula of nC(k+1);
+          //nCk = nc(n-k)
+
+          for (int i = 0; i < n; i++) {
+              int val = 1;
+              for (int j = 0; j <= i; j++) {
+                  System.out.print(val + "	");
+
+                  val = (val * (i - j)) / (j + 1); //using property of combination ie nC(k+1) = nCk*(n-k)/k+1;
+
+
+             }
+             System.out.println();
+        }
+
+     }
+
+
+
 
 
 
