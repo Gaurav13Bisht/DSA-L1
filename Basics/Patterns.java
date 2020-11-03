@@ -21,6 +21,7 @@ public class Main {
         pattern9();
         pattern10();
         pattern11();
+        pattern12();
 
 
     }
@@ -168,13 +169,13 @@ public class Main {
 
       public static void pattern6() {
 	 /*  5
-             *	*  *	*  *  *	
-	     *	*	   *  *	
-	     *		      *	
-	     *	*          *  *	
+             *	*  *	*  *  *
+	     *	*	   *  *
+	     *		      *
+	     *	*          *  *
 	     *	*  *    *  *  *
          */
-	      
+
 
           int n = scn.nextInt();
           int st = n / 2 + 1, sp = 1;
@@ -205,11 +206,11 @@ public class Main {
 
       public static void pattern7() {
 	   /*   5
-	        *	
-		    *	
-		 	*	
-			    *	
-				*	
+	        *
+		    *
+		 	*
+			    *
+				*
            */
           int n = scn.nextInt();
           int sp = 0;
@@ -225,10 +226,10 @@ public class Main {
 
      public static void pattern8() {
 	/*  5
-	    					*	
-					*		
-				*			
-			*				
+	    					*
+					*
+				*
+			*
 		*
 	*/
 
@@ -247,11 +248,11 @@ public class Main {
 
      public static void pattern9() {
 	/*   5
-	   *				*	
-		*		*		
-			*			
-	 	*        	*		
-	   *				*	
+	   *				*
+		*		*
+			*
+	 	*        	*
+	   *				*
 	*/
           int n = scn.nextInt(), st = 0;
           for (int i = 1; i <= n; i++) {
@@ -275,13 +276,13 @@ public class Main {
 
      public static void pattern10() {
         /*   5
-		     	*	
-		*		*	
-	*				*	
-		*		*	
-			*	
+		     	*
+		*		*
+	*				*
+		*		*
+			*
 	*/
-	     
+
         int n = scn.nextInt();
         int os = n / 2, is = -1;
         for (int i = 1; i <= n; i++) {
@@ -311,10 +312,10 @@ public class Main {
 
      public static void pattern11() {
 	/*   5
-                1	
-		2	3	
-		4	5	6	
-		7	8	9	10	
+                1
+		2	3
+		4	5	6
+		7	8	9	10
 		11	12	13	14	15
 	*/
 
@@ -330,7 +331,27 @@ public class Main {
 
     }
 
+
+    public static void pattern12() {
+
+          int n = scn.nextInt(), a = 0 , b = 1,c;
+          for(int i = 1; i<= n ;i++){
+            for(int j = 1 ; j<=i ; j ++){
+              System.out.print(a + "	");
+              c = a + b;
+              a = b;
+              b = c;
+
+            }
+            System.out.println();
+         }
+
+    }
+
+
     
+
+
 
 
 
