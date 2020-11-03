@@ -349,7 +349,14 @@ public class Main {
 
 
     public static void pattern12() {
-
+	 /*   5
+                0	
+		1	1	
+		2	3	5	
+		8	13	21	34	
+		55	89	144	233	377
+	 */
+	    
           int n = scn.nextInt(), a = 0 , b = 1,c;
           for(int i = 1; i<= n ;i++){
             for(int j = 1 ; j<=i ; j ++){
@@ -366,8 +373,14 @@ public class Main {
 
 
     public static void pattern13() {
+	 /*   5
+                1	
+		1	1	
+		1	2	1	
+		1	3	3	1	
+		1	4	6	4	1	
+	*/
 
-          Scanner scn = new Scanner(System.in);
           int n = scn.nextInt();
           //using combination formula of nC(k+1);
           //nCk = nc(n-k)
@@ -388,6 +401,18 @@ public class Main {
 
 
      public static void pattern14() {
+	   /*   3
+              	  3 * 1 = 3
+		  3 * 2 = 6
+		  3 * 3 = 9
+	       	  3 * 4 = 12
+		  3 * 5 = 15
+		  3 * 6 = 18
+		  3 * 7 = 21
+		  3 * 8 = 24
+		  3 * 9 = 27
+		  3 * 10 = 30	
+	   */
 
             int  n = scn.nextInt();
             for(int  i = 1 ; i <= 10 ; i++){
@@ -398,6 +423,15 @@ public class Main {
 
 
     public static void pattern16() {
+	  /*   7
+         	        1												1	
+			1	2										2	1	
+			1	2	3								3	2	1	
+			1	2	3	4						4	3	2	1	
+			1	2	3	4	5				5	4	3	2	1	
+			1	2	3	4	5	6		6	5	4	3	2	1	
+			1	2	3	4	5	6	7	6	5	4	3	2	1	
+    	 */
 
           int n = scn.nextInt();
           int sp = (n * 2) - 3; // (n*2)-1-2
@@ -423,10 +457,17 @@ public class Main {
              sp-=2;
         }
 
-      }
+    }
 
 
-      public static void pattern17() {
+    public static void pattern17() {
+	  /*   5
+               			*	
+	  			*	*	
+		*	*	*	*	*	
+				*	*	
+				*		
+	  */
 
           int n = scn.nextInt(), st = 1;
           for (int i = 1; i <= n; i++) {
@@ -450,10 +491,19 @@ public class Main {
 
           }
 
-      }
+    }
 
 
-      public static void pattern19() {
+    public static void pattern19() {
+	    /*   5
+               		*   *	*   	*
+			        *	*	
+			*   *	*   *	*	
+			*	*	
+			*	*   *	*	
+						
+	  */	
+   
 
           int n = scn.nextInt();
 
