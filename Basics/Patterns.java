@@ -5,7 +5,7 @@ public class Main {
 
     public static void main(String[] args) {
         solved();
-       //Unsolved();
+        Unsolved();
 
     }
 
@@ -25,10 +25,19 @@ public class Main {
         pattern13();
         pattern14();
 
+        pattern16();
 
     }
 
 
+    public static void Unsolved() {
+
+        //pattern15();
+
+    }
+
+//////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
     public static void pattern1() {
         /*    5
               *
@@ -383,7 +392,34 @@ public class Main {
     }
 
 
-    
+    public static void pattern16() {
+
+          int n = scn.nextInt();
+          int sp = (n * 2) - 3; // (n*2)-1-2
+          int j;
+          for (int i = 1; i <= n; i++) {
+              for (j = 1; j <= i; j++) {
+                  System.out.print(j + "	");
+              }
+              for(int m = 1; m <= sp; m++) {
+                  System.out.print("	");
+              }
+              if(i != n){
+                j--;
+            }
+            else
+            j-=2;
+
+            for( ; j >= 1; j--) {
+                System.out.print(j + "	");
+            }
+            System.out.println();
+
+             sp-=2;
+        }
+
+      }
+
 
 
 
