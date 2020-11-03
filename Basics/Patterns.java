@@ -23,6 +23,7 @@ public class Main {
         pattern11();
         pattern12();
         pattern13();
+        pattern14();
 
 
     }
@@ -370,6 +371,19 @@ public class Main {
         }
 
      }
+
+
+     public static void pattern14() {
+
+            int  n = scn.nextInt();
+            for(int  i = 1 ; i <= 10 ; i++){
+                System.out.println(n + " * " + i + " = " + n * i);
+            }
+
+    }
+
+
+    
 
 
 
