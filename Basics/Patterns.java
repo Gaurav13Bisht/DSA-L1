@@ -28,12 +28,16 @@ public class Main {
         pattern16();
         pattern17();
 
+        pattern19();
+
     }
 
 
     public static void Unsolved() {
 
         //pattern15();
+        //pattern18();
+        //pattern20();
 
     }
 
@@ -444,22 +448,89 @@ public class Main {
 
             System.out.println();
 
+          }
+
+      }
+
+
+      public static void pattern19() {
+
+          int n = scn.nextInt();
+
+          // LENGTHY AND NAIVE SOLTUION (BRUTEFORCE METHOD)
+
+          int st1 , st , sp , st2;
+          for(int  i = 1; i <= n; i++) {
+              if(i == 1) {
+                  st1 = n/2 + 1;
+                  sp = n - n/2 - 2;
+                  st2 = 1;
+                  for(int j = 1; j <= st1; j++) {
+                    System.out.print("*	");
+                }
+                for(int j = 1; j <= sp; j++) {
+                    System.out.print("	");
+                }
+
+                    System.out.print("*");
+
+
+                  }
+                  else
+                  if(i == n) {
+                    st1 = 1;
+                    sp  = n - n/2 - 2;
+                    st2 = n/2 + 1;
+                    for(int j = 1; j <= st1; j++) {
+                      System.out.print("*	");
+                }
+                for(int j = 1; j <= sp; j++) {
+                    System.out.print("	");
+                }
+                for(int j = 1; j <= st2; j++) {
+                    System.out.print("*	");
+                }
+
+              }
+              else
+              if(i == n/2 + 1) {
+                for(int j = 1; j <= n; j++) {
+                      System.out.print("*	");
+                }
+            }
+              else if(i < (n/2 + 1) ) {
+                sp = n/2;
+
+
+                for(int j = 1; j <= sp; j++) {
+                    System.out.print("	");
+                }
+                sp--;
+                   System.out.print("*	");
+
+                for(int j = 1; j <= sp; j++) {
+                     System.out.print("	");
+                }
+
+                 System.out.print("*	");
+
+
+               }
+               else {
+                 sp = n/2 - 1;
+                 System.out.print("*	");
+
+                 for(int j = 1; j <= sp; j++) {
+                      System.out.print("	");
+                }
+
+                System.out.print("*	");
+
+              }
+              System.out.println();
         }
 
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
+      }
 
 
 
