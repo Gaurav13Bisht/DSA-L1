@@ -15,6 +15,7 @@ public class Main {
         getValueInBase();
         getValueIndecimal();
         anyBaseToDecimal();
+        getSum();
 
 
 
@@ -126,6 +127,49 @@ public class Main {
     }
 
 //---------------------------------------------------------------
+
+
+    public static void getSum() {
+          int b = scn.nextInt();
+          int n1 = scn.nextInt();
+          int n2 = scn.nextInt();
+
+          int  d = getSumFunc(b, n1, n2);
+          System.out.println(d);
+    }
+
+    public static int getSumfunc(int b, int n1, int n2) {
+          int rem1, rem2, carry = 0, i = 0, added, addval = 0;
+
+          while (n1 != 0 || n2 != 0) {
+            rem1 = n1 % 10;
+            rem2 = n2 % 10;
+            if (carry + rem1 + rem2 < b) {
+            added = carry + rem1 + rem2;
+            addval += added * Math.pow(10, i);
+            i++;
+            carry = 0;
+        } else {
+            added = carry + (rem1 + rem2) - b;
+            carry = 1;
+            addval += added * Math.pow(10, i);
+            i++;
+        }
+
+          n1 = n1/10;
+          n2 = n2/10;
+
+          if(n1 == 0 && n2 == 0 && carry == 1)
+              addval += carry * Math.pow(10, i);
+       }
+
+          return addval;
+    }
+
+//---------------------------------------------------------------
+
+
+
 
 
 
