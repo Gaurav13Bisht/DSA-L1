@@ -13,6 +13,8 @@ public class Main {
     public static void solved() {
         getDigitFrequency();
         getValueInBase();
+        getValueIndecimal();
+
 
 
     }
@@ -67,9 +69,29 @@ public class Main {
 //---------------------------------------------------------------
 
 
+      public static void getValueIndecimal() {
+
+          int n = scn.nextInt();
+          int b = scn.nextInt();
+          int d = getValueIndecimalFunc(n, b);
+          System.out.println(d);
+        }
+
+     public static int getValueIndecimalFunc(int n, int b){
+          int rem, val = 0, i = 0;
+          while( n != 0) {
+            rem = n % 10;
+            val += rem * Math.pow(b,i);
+            i++;
+            n = n / 10;
+          }
+          return val;
+     }
+
+//---------------------------------------------------------------
+
+
       
-
-
 
 
 
