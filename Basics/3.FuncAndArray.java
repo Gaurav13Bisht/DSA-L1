@@ -14,6 +14,7 @@ public class Main {
         getDigitFrequency();
         getValueInBase();
         getValueIndecimal();
+        anyBaseToDecimal();
 
 
 
@@ -91,8 +92,40 @@ public class Main {
 //---------------------------------------------------------------
 
 
-      
+      public static void anyBaseToDecimal() {
 
+          int n = scn.nextInt();
+          int sourceBase = scn.nextInt();
+          int  destBase= scn.nextInt();
+          int nIntoDec = anyBaseToDecimalFunc(n, sourceBase);
+          int decIntoDestBase = decimalToAnyBase(nIntoDec, destBase);
+          System.out.print(decIntoDestBase);
+      }
+
+      public static int anyBaseToDecimalFunc(int n, int b){
+          int rem, val1 = 0, i = 0;
+          while( n != 0) {
+            rem = n % 10;
+            val1 += rem * Math.pow(b,i);
+            i++;
+            n = n / 10;
+          }
+          return val1;
+      }
+
+      public static int decimalToAnyBase(int n, int b) {
+          int rem, val2 = 0, i = 0;
+          while(n != 0) {
+            rem = n % b;
+            val2 += rem * Math.pow(10,i);
+            i ++;
+            n = n / b;
+          }
+          return val2;
+
+    }
+
+//---------------------------------------------------------------
 
 
 
