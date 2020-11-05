@@ -16,6 +16,7 @@ public class Main {
         getValueIndecimal();
         anyBaseToDecimal();
         getSum();
+        getDifference();
 
 
 
@@ -167,6 +168,42 @@ public class Main {
     }
 
 //---------------------------------------------------------------
+
+
+      public static void getDifference(); {
+
+          int b = scn.nextInt();
+          int n1 = scn.nextInt();
+          int n2 = scn.nextInt();
+
+          int d = getDifferenceFunc(b, n1, n2);
+          System.out.println(d);
+      }
+
+      public static int getDifferenceFunc(int b, int n1, int n2) {
+          int borrow = 0, p = 1, rem2, rem1, fval = 0;
+          while (n1 != 0 || n2 != 0 || borrow != 0) {
+            rem2 = n2 % 10;
+            rem1 = n1 % 10;
+            rem2 -= borrow;
+            if (rem2 >= rem1) {
+              fval += (rem2 - rem1) * p;
+              p *= 10;
+              borrow = 0;
+            } else {
+                fval += ((rem2 + b) - rem1) * p;
+                p *= 10;
+                borrow = 1;
+              }
+            n2 /= 10;
+            n1 /= 10;
+          }
+          return fval;
+
+     }
+
+//---------------------------------------------------------------
+
 
 
 
