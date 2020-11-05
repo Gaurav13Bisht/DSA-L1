@@ -6,11 +6,12 @@ public class Main {
 
     public static void main(String[] args) {
         solved();
-       //Unsolved();
+        Unsolved();
 
     }
 
     public static void solved() {
+
         getDigitFrequency();
         getValueInBase();
         getValueIndecimal();
@@ -18,8 +19,11 @@ public class Main {
         getSum();
         getDifference();
 
+    }
 
+    public static void Unsolved() {
 
+        //getProduct();
     }
 
 
@@ -203,6 +207,18 @@ public class Main {
      }
 
 //---------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
