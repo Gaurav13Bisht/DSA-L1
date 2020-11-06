@@ -21,6 +21,7 @@ public class Main {
 
         // Array Based
         spanOfArray();   // max - min
+        findElement();
 
     }
 
@@ -236,7 +237,26 @@ public class Main {
 
 //---------------------------------------------------------------
 
+      public static void findElement() {
 
+          int n = scn.nextInt();
+          int[] garray = new int[n];
+          for (int i = 0; i < garray.length; i++) {
+            garray[i] = scn.nextInt();
+          }
+
+          int d = scn.nextInt();
+          int pos = -1;
+
+          for (int i = 0; i < garray.length; i++) {
+              if (d == garray[i]) {
+                pos = i;
+                break;
+              }
+          }
+          System.out.println(pos);
+
+     }
 
 
 
