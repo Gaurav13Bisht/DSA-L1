@@ -11,13 +11,16 @@ public class Main {
     }
 
     public static void solved() {
-
+        // Function Based
         getDigitFrequency();
         getValueInBase();
         getValueIndecimal();
         anyBaseToDecimal();
         getSum();
         getDifference();
+
+        // Array Based
+        spanOfArray();   // max - min
 
     }
 
@@ -207,7 +210,31 @@ public class Main {
      }
 
 //---------------------------------------------------------------
+//---------------------------------------------------------------
 
+      public static void spanOfArray() {
+
+          int n = scn.nextInt();
+          int[] garray = new int[n];
+          for (int i = 0; i < n; i++) {
+              garray[i] = scn.nextInt();
+          }
+
+          int max = garray[0], min = garray[0];
+
+          for (int i = 1; i < n; i++) {
+              if (garray[i] > max)
+                  max = garray[i];
+              else
+                  if (garray[i] < min)
+                  min = garray[i];
+
+          }
+          System.out.println(max - min);
+
+      }
+
+//---------------------------------------------------------------
 
 
 
