@@ -22,6 +22,7 @@ public class Main {
         // Array Based
         spanOfArray();   // max - min
         findElement();
+        barchart();
 
     }
 
@@ -258,6 +259,62 @@ public class Main {
 
      }
 
+//---------------------------------------------------------------
+
+      public static void barchart() {
+
+          int n = scn.nextInt();
+          int[] garray = new int[n];
+          for(int i = 0; i < n; i++) {
+              garray[i] = scn.nextInt();
+          }
+
+          int max = garray[0];
+
+          for(int i = 0; i < n; i++)
+            if(garray[i] > max)
+              max = garray[i];
+
+              // MY SOLUTION
+              /*    int[] Sparray = new int[n];
+                    for(int i = 0; i < n; i++) {
+                    Sparray[i] = max - garray[i];
+                  }
+
+                    for(int i = 0; i < max; i++) {
+                    for(int j = 0; j < n; j++) {
+                    if(Sparray[j] != 0){
+                    System.out.print("	");
+                    Sparray[j]--;
+                  }
+                  else
+                      System.out.print("*	");
+                }
+                if(i != max-1)
+                System.out.println();
+              }
+
+              */
+
+              // SIR's BETTER APPROACH WITH LESS SPACE COMPLEXITY
+
+
+           for(int curfloor = max; curfloor > 0; curfloor--) {
+                for(int i = 0; i < n; i++){
+                  if(garray[i] >= curfloor) {
+                    System.out.print("*	");
+                  }
+                  else
+                      System.out.print("	");
+                  }
+                  if(curfloor != 0)
+                     System.out.println();
+          }
+     }
+
+//---------------------------------------------------------------
+
+     
 
 
 
