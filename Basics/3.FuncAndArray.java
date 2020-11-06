@@ -23,6 +23,7 @@ public class Main {
         spanOfArray();   // max - min
         findElement();
         barchart();
+        sumOfArrays();
 
     }
 
@@ -214,6 +215,7 @@ public class Main {
 //---------------------------------------------------------------
 //---------------------------------------------------------------
 
+
       public static void spanOfArray() {
 
           int n = scn.nextInt();
@@ -238,6 +240,7 @@ public class Main {
 
 //---------------------------------------------------------------
 
+
       public static void findElement() {
 
           int n = scn.nextInt();
@@ -260,6 +263,7 @@ public class Main {
      }
 
 //---------------------------------------------------------------
+
 
       public static void barchart() {
 
@@ -314,7 +318,52 @@ public class Main {
 
 //---------------------------------------------------------------
 
-     
+
+     public static void sumOfArrays() {
+
+            int n1 = scn.nextInt();
+            int[] ga1 = new int[n1];
+            for (int m = 0; m < n1; m++)
+                ga1[m] = scn.nextInt();
+
+            int n2 = scn.nextInt();
+            int[] ga2 = new int[n2];
+            for (int m = 0; m < n2; m++)
+                ga2[m] = scn.nextInt();
+
+            int[] sum = new int[n1 > n2 ? n1 : n2];
+
+            int i = ga1.length - 1;
+            int j = ga2.length - 1;
+            int k = sum.length - 1;
+            int c = 0;
+            int tempsum = 0;
+
+            while (k >= 0) {
+              tempsum = c;
+              if(i >= 0)
+                tempsum += ga1[i];
+
+              if(j >= 0)
+                tempsum += ga2[j];
+
+              sum[k] = tempsum % 10;
+              c = tempsum / 10;
+
+              i--;
+              j--;
+              k--;
+            }
+            if(c != 0)
+                System.out.println(c);
+
+
+            for(int val : sum)
+                System.out.println(val);
+
+     }
+
+//---------------------------------------------------------------
 
 
 
