@@ -24,6 +24,7 @@ public class Main {
         findElement();
         barchart();
         sumOfArrays();
+        diffOfArrays();
 
     }
 
@@ -361,6 +362,69 @@ public class Main {
             for(int val : sum)
                 System.out.println(val);
 
+     }
+
+//---------------------------------------------------------------
+
+
+      public static void diffOfArrays() {
+
+            int n1 = scn.nextInt();
+            int[] ga1 = new int[n1];
+            for (int m = 0; m < n1; m++)
+            ga1[m] = scn.nextInt();
+
+            int n2 = scn.nextInt();
+            int[] ga2 = new int[n2];
+            for (int m = 0; m < n2; m++)
+            ga2[m] = scn.nextInt();
+
+
+
+            int[] diff = new int[n1>n2?n1: n2];
+
+            int i = ga1.length - 1;
+            int j = ga2.length - 1;
+            int k = diff.length - 1;
+            int b = 0;
+            int tempdiff = 0;
+
+            while (k >= 0) {
+                tempdiff = b;
+                if (i >= 0) {
+                  if(n2 > n1)
+                  ga1[i] = -ga1[i];
+
+                  tempdiff += ga1[i];
+            }
+            if (j >= 0){
+                if(n2 > n1)
+                ga2[j] = -ga2[j];
+
+                tempdiff -= ga2[j];
+            }
+            if (tempdiff < 0) {
+                b = -1;
+                tempdiff += 10;
+            }
+            else
+              b = 0;
+
+            diff[k] = tempdiff;
+
+            i--;
+            j--;
+            k--;
+          }
+
+          int frontzerocheck = 0;
+          for (int z = 0; z < diff.length; z++) {
+              if (diff[z] == 0 && frontzerocheck == 0) {
+                continue;
+          } else {
+              System.out.println(diff[z]);
+              frontzerocheck = 1;
+            }
      }
 
 //---------------------------------------------------------------
