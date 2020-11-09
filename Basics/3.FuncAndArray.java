@@ -25,6 +25,7 @@ public class Main {
         barchart();
         sumOfArrays();
         diffOfArrays();
+        reverseArray();
 
     }
 
@@ -428,6 +429,43 @@ public class Main {
      }
 
 //---------------------------------------------------------------
+
+     public static void reverseArray() {
+       // Faster input
+       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+       int n = Integer.parseInt(br.readLine());
+       int[] a = new int[n];
+       for (int i = 0; i < n; i++) {
+           a[i] = Integer.parseInt(br.readLine());
+       }
+
+        reverseArrayFunc(a);
+    }
+
+    public static void reverseArrayFunc(int[] a) {
+          // using two pointers
+          int i = 0, j = a.length - 1;
+          while(i < j) {
+              int temp = a[i];
+              a[i] = a[j];
+              a[j] = temp;
+              i++;
+              j--;
+          }
+
+          StringBuilder sb = new StringBuilder();
+          for (int val: a) {
+            sb.append(val + " ");
+          }
+          System.out.println(sb);
+
+     }
+
+//---------------------------------------------------------------
+
+
+
 
 
 
