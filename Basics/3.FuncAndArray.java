@@ -29,6 +29,7 @@ public class Main {
         rotateArray();
         inverseArray();
         subArrays();
+        subsetsOfArray();
 
     }
 
@@ -545,6 +546,16 @@ public class Main {
 
     public static void subArrays() {
 
+      /*    3 10 20 30
+
+            10
+            10	20
+            10	20	30
+            20
+            20	30
+            30
+      */
+
         int n1 = scn.nextInt();
         int[] ga1 = new int[n1];
         for (int m = 0; m < n1; m++)
@@ -563,8 +574,40 @@ public class Main {
 //---------------------------------------------------------------
 
 
+     public static void subsetsOfArray() {
 
+         /*   3 10 20 30
 
+              -	-	-
+              -	-	30
+              -	20	-
+              -	20	30
+              10	-	-
+              10	-	30
+              10	20	-
+              10	20	30
+        */
+
+          int n1 = scn.nextInt();
+          int[] ga1 = new int[n1];
+          for (int m = 0; m < n1; m++)
+            ga1[m] = scn.nextInt();
+
+          for(int i = 0; i < (int)Math.pow(2,ga1.length); i++){
+              int temp = i;
+              String store = "";
+              for(int j = ga1.length - 1; j >= 0; j--){
+                if(temp % 2 == 0)
+                  store = "-	" + store;
+                else
+                  store = ga1[j] + "	" + store;
+                temp/=2;
+              }
+              System.out.println(store);
+           }
+     }
+
+//---------------------------------------------------------------
 
 
 
