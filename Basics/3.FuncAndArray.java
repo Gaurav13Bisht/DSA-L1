@@ -26,6 +26,7 @@ public class Main {
         sumOfArrays();
         diffOfArrays();
         reverseArray();
+        rotateArray();
 
     }
 
@@ -464,6 +465,51 @@ public class Main {
 
 //---------------------------------------------------------------
 
+      public static void rotateArray() {
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+            int n = Integer.parseInt(br.readLine());
+            int[] a = new int[n];
+            for (int i = 0; i < n; i++) {
+              a[i] = Integer.parseInt(br.readLine());
+              }
+              int k = Integer.parseInt(br.readLine());
+
+              rotateArrayFunc(a, k);
+        }
+
+      public static void rotateArrayFunc(int[] a, int k) {
+               k %= a.length;
+               if(k < 0)
+               k = k + a.length;
+
+               reverseArrayFunc(a,0,a.length - k - 1);
+               reverseArrayFunc(a,a.length - k, a.length - 1);
+               reverseArrayFunc(a,0,a.length - 1);
+
+               StringBuilder sb = new StringBuilder();
+
+               for (int val: a) {
+                 sb.append(val + " ");
+               }
+               System.out.println(sb);
+
+           }
+
+
+
+
+     public static void reverseArrayFunc(int[] b, int i, int j){
+          while(i < j){
+              int temp = b[i];
+              b[i] = b[j];
+              b[j] = temp;
+              i++;
+              j--;
+            }
+          }
+
+//---------------------------------------------------------------
 
 
 
