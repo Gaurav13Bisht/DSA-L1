@@ -28,6 +28,7 @@ public class Main {
         reverseArray();
         rotateArray();
         inverseArray();
+        subArrays();
 
     }
 
@@ -542,9 +543,24 @@ public class Main {
 
 //---------------------------------------------------------------
 
+    public static void subArrays() {
 
+        int n1 = scn.nextInt();
+        int[] ga1 = new int[n1];
+        for (int m = 0; m < n1; m++)
+            ga1[m] = scn.nextInt();
 
+        for(int i = 0; i < n1; i++){
+            for(int j = i ; j < n1; j++){
+                for(int k = i; k <= j ; k++){
+                    System.out.print(ga1[k] + "	");
+                }
+                System.out.println();
+            }
+         }
+     }
 
+//---------------------------------------------------------------
 
 
 
