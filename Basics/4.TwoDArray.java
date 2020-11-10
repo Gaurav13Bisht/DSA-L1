@@ -11,6 +11,7 @@ public class Main {
 
     public static void solved() {
         matrixMult();
+        waveTraversal();
     }
 
     public static void unsolved() {
@@ -59,6 +60,51 @@ public class Main {
 
 //-------------------------------------------------------------------
 
+
+      public static void waveTraversal() {
+
+            int n = scn.nextInt();
+            int m = scn.nextInt();
+
+            int[][] g = new int[n][m];
+
+            for(int i = 0; i < n; i++)
+              for(int j = 0; j < m; j++)
+                g[i][j] = scn.nextInt();
+
+                // My 2 solutions :
+
+          /*  for(int i = 0; i < m; i++) {
+                  if(i % 2 == 0){
+                  for(int j = 0; j < n; j++){
+                    System.out.println(g[j][i]);
+                  }
+                }
+                else
+                  for(int j = n - 1; j >= 0; j--){
+                    System.out.println(g[j][i]);
+                  }
+                }
+        */
+            for(int i = 0; i < m; i++) {
+              for(int j = 0; j < n; j++){
+                System.out.println(g[j][i]);
+
+              }
+
+              if(i < m -1) {
+                  i++;
+                  for(int j = n - 1; j >= 0; j--){
+                    System.out.println(g[j][i]);
+                  }
+
+              }
+            }
+
+
+     }
+
+//------------------------------------------------------------------
 
 
 
