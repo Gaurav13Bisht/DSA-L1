@@ -30,6 +30,7 @@ public class Main {
         inverseArray();
         subArrays();
         subsetsOfArray();
+        ceilAndFloor();
 
     }
 
@@ -606,6 +607,76 @@ public class Main {
               System.out.println(store);
            }
      }
+
+//---------------------------------------------------------------
+
+      public static void ceilAndFloor() {
+
+            int n = scn.nextInt();
+            int[] g = new int[n];
+            for(int i = 0; i < n; i++){
+              g[i] = scn.nextInt();
+            }
+            int key = scn.nextInt();
+
+            int l, h;
+                  //MY APPROACH
+            /*    l = 0;
+                  h = g.length - 1;
+                  int mid = 0;
+                  while(l + 1 < h){
+                    mid = (l + h)/2;
+
+                    if(g[mid] < key)
+                    l = mid;
+                    else
+                    if(g[mid] > key)
+                    h = mid;
+
+                    else{
+                    System.out.print(g[mid] + "
+                    " + g[mid]);
+                    break;
+                  }
+
+                  if(g[l + 1] == g[h]){
+                    System.out.print(g[h] + "
+                    " + g[l]);
+                    break;
+                  }
+                }
+                */
+
+                //SIR's APPROACH
+
+                l = 0;
+                h = g.length - 1;
+                int mid = 0;
+                int ceil = h , floor = l;
+                while(l <= h){
+                  mid = (l + h)/2;
+
+                  if(g[mid] < key){
+                    l = mid + 1;
+                    floor = mid;
+
+                  }
+                  else
+                  if(g[mid] > key){
+                    h = mid - 1;
+                    ceil = mid;
+                  }
+
+                  else{
+                    ceil = mid;
+                    floor = mid;
+                    break;
+                  }
+
+                }
+                System.out.print(g[ceil] + "
+                " + g[floor]);
+      }
 
 //---------------------------------------------------------------
 
