@@ -31,6 +31,7 @@ public class Main {
         subArrays();
         subsetsOfArray();
         ceilAndFloor();
+        firstAndLastIdx();
 
     }
 
@@ -680,8 +681,62 @@ public class Main {
 
 //---------------------------------------------------------------
 
+      public static void firstAndLastIdx {
 
+            int n = scn.nextInt();
+            int[] g = new int[n];
+            for (int i = 0; i < n; i++) {
+              g[i] = scn.nextInt();
+            }
+            int key = scn.nextInt();
 
+            int l = 0, h = g.length - 1, mid = 0, li = -1;
+
+            // for FINDING THE LAST INDEX we will be focusing on the later half
+            // of the array
+            while (l <= h) {
+              mid = (l + h) / 2;
+              if(g[mid] < key)
+              l = mid + 1;
+
+              else
+              if(g[mid] > key)
+              h = mid - 1;
+
+              else{
+                li = mid;
+                l = mid + 1;
+              }
+            }
+
+            l = 0;
+            h = g.length - 1;
+            mid = 0;
+            int fi = -1;
+
+            // for FINDING THE FIRST INDEX we will be focusing on the first half
+            // of the array
+            while (l <= h) {
+              mid = (l + h) / 2;
+              if(g[mid] < key)
+                l = mid + 1;
+
+              else
+              if(g[mid] > key)
+              h = mid - 1;
+
+              else{
+                fi = mid;
+
+                h = mid - 1;
+              }
+            }
+            System.out.print(fi + "
+            " + li);
+
+     }
+
+//---------------------------------------------------------------
 
 
 
