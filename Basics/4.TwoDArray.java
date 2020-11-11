@@ -13,6 +13,7 @@ public class Main {
         matrixMult();
         waveTraversal();
         spiralDisplay();
+        exitPoint();
     }
 
     public static void unsolved() {
@@ -153,8 +154,96 @@ public class Main {
 
 //------------------------------------------------------------------
 
+       public static void exitPoint() {
 
+            int n = scn.nextInt();
+            int m = scn.nextInt();
 
+            int[][] g = new int[n][m];
+
+            //MY NAIVE APPROACH
+
+            for (int i = 0; i < g.length; i++)
+              for (int j = 0; j < g[0].length; j++)
+                g[i][j] = scn.nextInt();
+
+            int icur = 0, jcur = 0, iprev = 0, jprev = 0, checki = 0;
+
+            while (true) {
+
+              if (g[icur][jcur] == 0) {
+                if (icur == iprev && jcur == jprev) {
+                  jcur++;
+                if (jcur > m - 1) {
+                    System.out.print(icur + "
+                        " + (jcur - 1));
+                        break;
+                      }
+
+                    } else
+                    if (icur == iprev && jcur > jprev) {
+                      jprev = jcur;
+                      jcur++;
+                      if (jcur > m - 1) {
+                        System.out.print(icur + "
+                            " + (jcur - 1));
+                            break;
+                          }
+                        } else
+                        if (jcur == jprev && icur > iprev) {
+                          iprev = icur;
+                          icur++;
+                          if (icur > n - 1) {
+                            System.out.print((icur - 1) + "
+                                " + jcur);
+                                break;
+
+                              }
+                            } else
+                            if (icur == iprev && jcur < jprev) {
+                              jprev = jcur;
+                              jcur--;
+                              if (jcur < 0) {
+                                System.out.print(icur + "
+                                    " + (jcur + 1));
+                                    break;
+                                  }
+
+                                } else
+                                if (jcur == jprev && icur < iprev) {
+                                  iprev = icur;
+                                  icur--;
+                                  if (icur < 0) {
+                                    System.out.print((icur + 1) + "
+                                        " + jcur);
+                                        break;
+                                      }
+
+                                    }
+                                  } else {
+
+                                    if (icur == iprev && jcur > jprev) {
+                                      jprev = jcur;
+                                      icur++;
+                                    } else
+                                if (jcur == jprev && icur > iprev) {
+                                    iprev = icur;
+                                    jcur--;
+                                  } else
+                                if (icur == iprev && jcur < jprev) {
+                                    jprev = jcur;
+                                    icur--;
+                                  } else
+                                  if (jcur == jprev && icur < iprev) {
+                                    iprev = icur;
+                                    jcur++;
+                                  }
+
+                    }
+              }
+      }
+
+//------------------------------------------------------------------
 
 
 
