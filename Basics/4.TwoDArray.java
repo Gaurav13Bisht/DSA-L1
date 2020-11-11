@@ -6,7 +6,7 @@ public class Main {
     static Scanner scn = new Scanner(System.in);
     public static void main(String[] args) throws Exception {
         solved();
-        //unsolved();
+        unsolved();
     }
 
     public static void solved() {
@@ -18,7 +18,10 @@ public class Main {
     }
 
     public static void unsolved() {
-
+      //  shellRotate();
+      //  diagonalTraversal();
+      //  saddlePoint();
+      //  searchInASorted2DArray();
     }
 
     public static void matrixMult() {
