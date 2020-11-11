@@ -12,6 +12,7 @@ public class Main {
     public static void solved() {
         matrixMult();
         waveTraversal();
+        spiralDisplay();
     }
 
     public static void unsolved() {
@@ -105,6 +106,64 @@ public class Main {
      }
 
 //------------------------------------------------------------------
+
+
+      public static void spiralDisplay() {
+
+            int n = scn.nextInt();
+            int m = scn.nextInt();
+
+            int[][] g = new int[n][m];
+
+            for (int i = 0; i < g.length; i++)
+              for (int j = 0; j < g[0].length; j++)
+                g[i][j] = scn.nextInt();
+
+            int check = 0, i = 0, j = 0;
+            int lrow = 0, lcol = 0, mrow = n - 1, mcol = m - 1;
+            while (check < n * m) {
+
+              for (i = lrow, j = lcol; i <= mrow; i++) {
+                System.out.println(g[i][j]);
+                check++;
+
+              }
+              lcol++;
+              for (j = lcol, i = mrow; j <= mcol && check < n * m; j++) {
+                System.out.println(g[i][j]);
+                check++;
+
+              }
+              mrow--;
+              for (i = mrow, j = mcol; i >= lrow && check < n * m; i--) {
+                System.out.println(g[i][j]);
+                check++;
+
+              }
+              mcol--;
+              for (j = mcol, i = lrow; j >= lcol && check < n * m; j--) {
+                System.out.println(g[i][j]);
+                check++;
+
+              }
+              lrow++;
+            }
+
+      }
+
+//------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
