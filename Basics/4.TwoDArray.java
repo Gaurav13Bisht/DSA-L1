@@ -14,6 +14,7 @@ public class Main {
         waveTraversal();
         spiralDisplay();
         exitPoint();
+        rotateBy90();
     }
 
     public static void unsolved() {
@@ -246,6 +247,66 @@ public class Main {
 //------------------------------------------------------------------
 
 
+        public static void rotateBy90() {
+
+              int n = scn.nextInt();
+              int[][] g = new int[n][n];
+
+              for (int i = 0; i < n; i++)
+                for (int j = 0; j < n; j++)
+                  g[i][j] = scn.nextInt();
+
+              int lrow = 0, lcol = 0, mrow = n - 1, mcol = n - 1;
+              int squares;
+              if (n % 2 == 0)
+                squares = n / 2;
+              else
+                squares = (n + 1) / 2;
+
+              for (int p = 0; p < squares; p++) {
+                int i1 = lrow, j1 = lcol, i2 = mrow, j2 = lcol;
+                int i3 = mrow, j3 = mcol, i4 = lrow, j4 = mcol;
+
+                for (int k = lcol; k < mcol; k++) {
+
+                  if (n % 2 != 0 && i1 == n / 2 && j1 == n / 2) {
+                    break;
+
+                  } else {
+                    int temp = g[i1][j1];
+                    g[i1][j1] = g[i2][j2];
+                    g[i2][j2] = temp;
+
+                    g[i2][j2] = g[i3][j3];
+                    g[i3][j3] = temp;
+
+                    g[i3][j3] = g[i4][j4];
+                    g[i4][j4] = temp;
+
+                    j1++;
+                    i2--;
+                    j3--;
+                    i4++;
+                  }
+
+                }
+                lrow++;
+                lcol++;
+                mrow--;
+                mcol--;
+
+
+              }
+
+              for (int i = 0; i < g.length; i++) {
+                  for (int j = 0; j < g[0].length; j++) {
+                      System.out.print(g[i][j] + " ");
+                  }
+                  System.out.println();
+              }
+       }
+
+//------------------------------------------------------------------
 
 
 
