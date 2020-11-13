@@ -12,6 +12,7 @@ public class Main {
     public static void solved() {
         basics();
         useOfequalsKeyword();
+        palindromeAndSubSPalin();         // Palindrome And Sub String Palindrome
         stringBuilderUse();
         modifyString();
     }
@@ -106,28 +107,42 @@ public class Main {
 
       }
 
+//--------------------------------------------------------------------
 
 
+      public static palindromeAndSubSPalin() {
 
+          String s = scn.nextLine();
+          System.out.println(palindrome(s));
+          SubStringsPlndrm(s);
 
+      }
 
+      public static boolean palindrome(String s) {
 
+          int left = 0, right = s.length() - 1 ;
+          while(left <= right) {
+            if(s.charAt(left) != s.charAt(right)) {
+              return false;
+            }
+            left ++;
+            right --;
+          }
 
+          return true;
+      }
 
+      public static void SubStringsPlndrm(String s) {
 
+          System.out.println("Sub strings :" );
+          for(int i = 0; i < s.length(); i++) {
+            for(int j = i + 1; j <= s.length(); j++)
+              if(palindrome(s.substring(i,j)))
+                System.out.println(s.substring(i,j));
+          }
+      }
 
-
-
-
-
-
-
-
-
-
-
-
-
+//-------------------------------------------------------------------
 
       public static void stringBuilderUse() {
           StringBuilder s = new StringBuilder("Hello");
