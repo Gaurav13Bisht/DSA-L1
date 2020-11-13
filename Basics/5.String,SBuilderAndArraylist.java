@@ -11,6 +11,7 @@ public class Main {
 
     public static void solved() {
         basics();
+        stringBuilderUse();
         modifyString();
     }
 
@@ -75,6 +76,26 @@ public class Main {
 
 //-----------------------------------------------------------------
 
+      public static void stringBuilderUse() {
+          StringBuilder s = new StringBuilder("Hello");
+          System.out.println(s);
+
+          s.setCharAt(2, 'd');
+          System.out.println(s);
+
+          s.deleteCharAt(2);
+          System.out.println(s);
+
+          s.insert(2, 'p');
+          System.out.println(s);
+
+          s.append('d');
+          System.out.println(s);
+      }
+
+//----------------------------------------------------------------
+
+
       public static void modifyString() {
 
           String s = scn.nextLine();
@@ -98,7 +119,7 @@ public class Main {
 
       }
 
-
+//-----------------------------------------------------------------
 
 
 
