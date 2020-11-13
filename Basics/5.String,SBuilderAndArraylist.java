@@ -11,6 +11,7 @@ public class Main {
 
     public static void solved() {
         basics();
+        modifyString();
     }
 
     public static void unsolved() {
@@ -74,6 +75,28 @@ public class Main {
 
 //-----------------------------------------------------------------
 
+      public static void modifyString() {
+
+          String s = scn.nextLine();
+          System.out.println(modifyStringFunc(s) + "\n");
+
+      }
+
+      public static String modifyStringFunc(String s) {
+
+          StringBuilder sb = new StringBuilder();
+          for(int i = 0; i < s.length(); i++) {
+            char ch1 = s.charAt(i);
+            sb.append(ch1);
+            if(i != s.length() - 1) {
+              char ch2 = s.charAt(i + 1);
+              int diff = ch2 - ch1;
+              sb.append(diff);
+            }
+          }
+          return sb.toString();
+
+      }
 
 
 
