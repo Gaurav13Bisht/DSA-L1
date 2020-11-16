@@ -17,6 +17,7 @@ public class Main {
         modifyString();
         toggleChars();
         stringCompression();
+        stringPermutations();
     }
 
 
@@ -291,5 +292,52 @@ public class Main {
        }
 
 //------------------------------------------------------------------
+
+       public static void stringPermutations() {
+
+            String str = scn.next();
+            int leng = str.length();
+            int fact = factorial(leng);
+
+            for(int i = 0; i < fact; i++){
+              int itemp = i;
+              StringBuilder str1 = new StringBuilder(str);
+
+              for(int divs = leng; divs > 0; divs--){
+                int rem = itemp % divs;
+                System.out.print(str1.charAt(rem));
+                str1.deleteCharAt(rem);
+                itemp /= divs;
+              }
+              System.out.println();
+            }
+          }
+
+       public static int factorial(int n){
+            int tfact = 1;
+            for(int i = n; i > 1; i--){
+              tfact *= i;
+            }
+            return tfact;
+      }
+
+//--------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
