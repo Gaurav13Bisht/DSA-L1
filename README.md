@@ -1,2 +1,2 @@
-# PepCodingL1
-This repo contains all the codes I have submitted till date in the Pepcoding's DSA level 1 course.
+# DATA STRUCTURES AND ALGORITHM Level1
+This repo contains the codes I have done till date in the DSA level 1.
