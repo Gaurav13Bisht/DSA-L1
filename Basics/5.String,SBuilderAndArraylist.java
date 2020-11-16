@@ -18,6 +18,7 @@ public class Main {
         toggleChars();
         stringCompression();
         stringPermutations();
+        removePrime();
     }
 
 
@@ -323,21 +324,40 @@ public class Main {
 
 //--------------------------------------------------------------
 
+      public static void removePrime() {
+
+          int n = scn.nextInt();
+          ArrayList<Integer> al = new ArrayList<>();
+          for(int i = 0 ; i < n; i++){
+            al.add(scn.nextInt());
+          }
+          solution(al);
+          System.out.println(al);
+        }
+
+      public static void solution(ArrayList<Integer> al){
+          int size = al.size();
+          for(int i = 0, k = 0; k < size; i++, k++){
+            int check = 0;
+            for(int j = 2; j * j <= al.get(i); j++){
+              if(al.get(i) % j == 0){
+                check++;
+                break;
+              }
+              else
+              continue;
+            }
+            if(check == 0){
+              al.remove(i);
+              i--;
+            }
+
+         }
+
+     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+//---------------------------------------------------------------------
 
 
 }
