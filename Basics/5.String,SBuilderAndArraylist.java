@@ -15,6 +15,7 @@ public class Main {
         palindromeAndSubSPalin();         // Palindrome And Sub String Palindrome
         stringBuilderUse();
         modifyString();
+        toggleChars();
     }
 
     public static void unsolved() {
@@ -189,7 +190,51 @@ public class Main {
 
 //-----------------------------------------------------------------
 
+      public static void toggleChars() {
 
+          String s = scn.nextLine();
 
+          System.out.println(togChars(s) + "\n");
 
-}
+          System.out.println(toggOdEvn(s));
+
+      }
+
+      public static String togChars(String s) {
+
+          StringBuilder sb = new StringBuilder(s);
+
+          for(int i = 0; i < sb.length(); i++) {
+            char ch = sb.charAt(i);
+
+            if(ch >= 'a' && ch <= 'z') {
+              ch = (char)(ch - 'a' + 'A');
+            }
+            else if(ch >= 'A' && ch <= 'Z') {
+              ch = (char)(ch + 'a' - 'A');
+            }
+
+            sb.setCharAt(i, ch);
+          }
+          return sb.toString();
+        }
+
+      public static String toggOdEvn(String s) {
+
+            StringBuilder sb = new StringBuilder(s);
+            for(int i = 0; i < sb.length(); i++) {
+              char ch = sb.charAt(i);
+
+              if(i % 2 ==0)
+              ch = (char)(ch + 1);
+
+              else
+              ch = (char)(ch - 1);
+
+              sb.setCharAt(i, ch);
+            }
+            return sb.toString();
+          }
+      }
+
+//----------------------------------------------------------------
