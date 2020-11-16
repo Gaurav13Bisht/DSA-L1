@@ -6,7 +6,7 @@ public class Main {
     static Scanner scn = new Scanner(System.in);
     public static void main(String[] args) throws Exception {
         solved();
-        unsolved();
+        //unsolved();
     }
 
     public static void solved() {
@@ -16,10 +16,7 @@ public class Main {
         stringBuilderUse();
         modifyString();
         toggleChars();
-    }
-
-    public static void unsolved() {
-
+        stringCompression();
     }
 
 
@@ -238,3 +235,61 @@ public class Main {
       }
 
 //----------------------------------------------------------------
+
+
+      public static void stringCompression() {
+
+          String s = scn.nextLine();
+
+          comp1(s);
+          System.out.println();
+          comp2(s);
+
+      }
+
+      public static void comp1(String s) {
+
+          StringBuilder sb = new StringBuilder(s);
+          for(int i = 0; i < sb.length(); i++) {
+            char ch1 = sb.charAt(i);
+            if(i != sb.length() - 1)
+            {
+              char ch2 = sb.charAt(i + 1);
+
+              if(ch1 != ch2)
+              System.out.print(ch1);
+            }
+            else
+            System.out.print(ch1);
+          }
+
+
+        }
+
+        public static void comp2(String s) {
+            StringBuilder sb = new StringBuilder(s);
+            int counter = 1;
+
+            for(int i = 0; i < sb.length(); i++) {
+              char ch1 = sb.charAt(i);
+              if(i != sb.length() - 1)
+              {
+                char ch2 = sb.charAt(i + 1);
+
+                if(ch1 != ch2) {
+                  System.out.print(ch1);
+                  if(counter != 1)
+                  System.out.print(counter);
+                  counter = 1;
+                }
+                else
+                counter ++;
+              }
+              else
+                System.out.print(ch1);
+           }
+       }
+
+//------------------------------------------------------------------
+
+}
