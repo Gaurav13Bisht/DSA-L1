@@ -15,6 +15,7 @@ public class Main {
           printDecreasing();
           printIncreasing();
           printDecInc();
+          factorial();
 
     }
 
@@ -67,6 +68,21 @@ public class Main {
 
 //---------------------------------------------------------------
 
+    public static void factorial() {
+
+        int n = scn.nextInt();
+        System.out.print(factorialRF(n));
+    }
+
+    public static int factorialRF(int n){
+
+        if(n == 0)
+            return 1;
+        int tfact = n * factorialRF(n-1);
+        return tfact;
+    }
+
+//-----------------------------------------------------------------
 
 
 
