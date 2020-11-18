@@ -16,6 +16,7 @@ public class Main {
           printIncreasing();
           printDecInc();
           factorial();
+          powerLinear();
 
     }
 
@@ -84,7 +85,20 @@ public class Main {
 
 //-----------------------------------------------------------------
 
+     public static void powerLinear() {
 
+        int x = scn.nextInt();
+        int n = scn.nextInt();
+        System.out.print(powerLinearRF(x,n));
+    }
 
+    public static int powerLinearRF(int x, int n){
+        if(n == 0)
+            return 1;
+        int tpower = x * powerLinearRF(x, n - 1);
+        return tpower;
+    }
+
+//-----------------------------------------------------------------
 
 }
