@@ -14,7 +14,7 @@ public class Main {
 
           printDecreasing();
           printIncreasing();
-
+          printDecInc();
 
     }
 
@@ -50,8 +50,22 @@ public class Main {
 
 //---------------------------------------------------------------
 
+    public static void printDecInc() {
 
+        int n = scn.nextInt();
+        printDecIncRF(n);
+    }
 
+    public static void printDecIncRF(int n){
+        if(n == 0)
+            return;
+        System.out.println(n);
+        printDecIncRF(n - 1);
+        System.out.println(n);
+
+    }
+
+//---------------------------------------------------------------
 
 
 
