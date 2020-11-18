@@ -17,6 +17,7 @@ public class Main {
           printDecInc();
           factorial();
           powerLinear();
+          powerLogarithmic();
 
     }
 
@@ -100,5 +101,31 @@ public class Main {
     }
 
 //-----------------------------------------------------------------
+
+    public static void powerLogarithmic() {
+
+        int x = scn.nextInt();
+        int n = scn.nextInt();
+        System.out.print(powerLogarithmicRF(x,n));
+    }
+
+    public static int powerLogarithmicRF(int x, int n){
+
+        if(n == 0)
+            return 1;
+
+        int hpower = powerLogarithmicRF(x, n / 2);
+        int tpower = hpower * hpower;
+
+        if(n % 2 == 1)
+            tpower *= x;
+
+        return tpower;
+    }
+
+//-----------------------------------------------------------------
+
+
+
 
 }
