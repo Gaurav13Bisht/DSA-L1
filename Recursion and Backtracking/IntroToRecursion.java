@@ -18,6 +18,7 @@ public class Main {
           factorial();
           powerLinear();
           powerLogarithmic();
+          zigZag();
 
     }
 
@@ -125,7 +126,25 @@ public class Main {
 
 //-----------------------------------------------------------------
 
+     public static void zigZag() {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        zigZagRF(n);
 
+    }
 
+    public static void zigZagRF(int n){
+
+        if(n == 0)
+            return;
+        System.out.print(n + " ");
+        zigZagRF(n - 1);
+        System.out.print(n + " ");
+        zigZagRF(n - 1);
+        System.out.print(n + " ");
+
+    }
+
+//-----------------------------------------------------------------
 
 }
