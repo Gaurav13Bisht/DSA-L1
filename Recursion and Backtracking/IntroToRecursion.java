@@ -19,6 +19,7 @@ public class Main {
           powerLinear();
           powerLogarithmic();
           zigZag();
+          towerOfHanoi();
 
     }
 
@@ -127,7 +128,7 @@ public class Main {
 //-----------------------------------------------------------------
 
      public static void zigZag() {
-        Scanner scn = new Scanner(System.in);
+
         int n = scn.nextInt();
         zigZagRF(n);
 
@@ -146,5 +147,28 @@ public class Main {
     }
 
 //-----------------------------------------------------------------
+
+    public static void towerOfHanoi() {
+
+        int disk = scn.nextInt();
+        int t1id = scn.nextInt();
+        int t2id = scn.nextInt();
+        int t3id = scn.nextInt();
+        towerOfHanoiRF(disk,t1id,t2id,t3id);
+
+    }
+
+    public static void towerOfHanoiRF(int n, int t1id, int t2id, int t3id){
+
+        if(n == 0)
+            return;
+
+        towerOfHanoiRF(n - 1, t1id, t3id, t2id);
+        System.out.println(n + "[" + t1id + " -> " + t2id + "]");
+        towerOfHanoiRF(n - 1, t3id, t2id, t1id);
+
+    }
+
+//--------------------------------------------------------------------
 
 }
