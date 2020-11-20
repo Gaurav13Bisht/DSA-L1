@@ -12,7 +12,7 @@ public class Main {
 
     public static void solved() {
           displayArray();
-
+          displayArrRev();
 
 
     }
@@ -37,7 +37,26 @@ public class Main {
 
 //-------------------------------------------------------------------
 
+    public static void displayArrRev() {
 
+          int n = scn.nextInt();
+          int[] a = new int[n];
+          for(int i = 0; i < n; i++){
+              a[i] = scn.nextInt();
+          }
+          displayArrRevRF(a, n - 1);
+    }
+
+    public static void displayArrRevRF(int[] arr, int idx){
+          if(idx == -1)
+              return;
+
+          System.out.println(arr[idx]);
+          displayArrRevRF(arr, idx - 1);
+
+    }
+
+//-------------------------------------------------------------------
 
 
 
