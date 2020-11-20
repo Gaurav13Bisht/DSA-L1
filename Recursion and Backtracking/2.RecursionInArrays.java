@@ -14,7 +14,7 @@ public class Main {
           displayArray();
           displayArrRev();
           maxOfArray();
-
+          firstIndex();
     }
 
 
@@ -83,4 +83,31 @@ public class Main {
 
 //--------------------------------------------------------------
 
+    public static void firstIndex() {
+
+        int n = scn.nextInt();
+        int[] a = new int[n];
+        for(int i = 0; i < n; i++){
+            a[i] = scn.nextInt();
+        }
+
+        int key = scn.nextInt();
+        System.out.print(firstIndexRF(a, 0, key));
+
+    }
+
+    public static int firstIndexRF(int[] arr, int idx, int x){
+
+        if(idx == arr.length)
+            return -1;
+        else if(arr[idx] == x)
+            return idx;
+
+        int fid = firstIndexRF(arr, idx + 1, x);
+
+
+        return fid;
+    }
+
+//-------------------------------------------------------------------
 }
