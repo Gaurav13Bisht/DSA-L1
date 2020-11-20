@@ -13,7 +13,7 @@ public class Main {
     public static void solved() {
           displayArray();
           displayArrRev();
-
+          maxOfArray();
 
     }
 
@@ -58,6 +58,29 @@ public class Main {
 
 //-------------------------------------------------------------------
 
+    public static void maxOfArray() {
 
+        int n = scn.nextInt();
+        int[] a = new int[n];
+        for(int i = 0; i < n; i++){
+            a[i] = scn.nextInt();
+        }
+        System.out.print(maxOfArrayRF(a, n - 1));
+
+    }
+
+    public static int maxOfArrayRF(int[] arr, int idx){
+        if(idx == 0)
+            return arr[0];
+
+        int temp = maxOfArrayRF(arr,idx - 1);
+        if(arr[idx] > temp)
+            return arr[idx];
+        else
+            return temp;
+
+    }
+
+//--------------------------------------------------------------
 
 }
