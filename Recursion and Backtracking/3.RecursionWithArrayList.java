@@ -15,6 +15,7 @@ public class Main {
         getKPC();
         getStairPaths();
         getMazePaths();
+        getMazePathsWithJumps();
     }
 
 
@@ -174,5 +175,59 @@ public class Main {
     }
 
 //----------------------------------------------------------------------
+
+    public static void getMazePathsWithJumps() {
+
+        int n = scn.nextInt();
+        int m = scn.nextInt();
+        ArrayList < String > str = getMazePathsWithJumpsRF(1, 1, n, m);
+        System.out.print(str);
+    }
+
+    // sr - source row
+    // sc - source column
+    // dr - destination row
+    // dc - destination column
+    public static ArrayList < String > getMazePathsWithJumpsRF(int sr, int sc, int dr, int dc) {
+
+        if (sr == dr && sc == dc) {
+            ArrayList < String > reached = new ArrayList < > ();
+            reached.add("");
+            return reached;
+        }
+
+        ArrayList < String > paths = new ArrayList < > ();
+
+        for (int hz = 1; hz <= dc - sc; hz++){
+
+            ArrayList < String > hpaths = getMazePathsWithJumpsRF(sr, sc + hz, dr, dc);
+
+            for(String hpath : hpaths){
+            paths.add("h" + hz + hpath);
+            }
+
+        }
+        for (int vr = 1; vr <= dr - sr; vr++){
+
+            ArrayList < String > vpaths = getMazePathsWithJumpsRF(sr + vr, sc, dr, dc);
+
+            for(String vpath : vpaths){
+            paths.add("v" + vr + vpath);
+            }
+        }
+         for (int dg = 1; dg <= dr - sr && dg <= dc - sc; dg++){
+
+            ArrayList < String > dpaths = getMazePathsWithJumpsRF(sr + dg, sc + dg, dr, dc);
+
+            for(String dpath : dpaths){
+            paths.add("d" + dg + dpath);
+            }
+
+        }
+        return paths;
+
+    }
+
+//--------------------------------------------------------------------------
 
 }
