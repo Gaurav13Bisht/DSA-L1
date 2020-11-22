@@ -13,6 +13,7 @@ public class Main {
     public static void solved() {
         getSubsequence();
         getKPC();
+        getStairPaths();
     }
 
 
@@ -82,5 +83,51 @@ public class Main {
     }
 
 //---------------------------------------------------------------------
+
+    public static void getStairPaths() {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        ArrayList<String> str = getStairPathsRF(n,0);
+        System.out.print(str);
+    }
+
+    //This is my approach for going from Down to top of the stairs
+
+    public static ArrayList<String> getStairPathsRF(int n,int idx) {
+        if(idx == n){
+            ArrayList < String > bcase = new ArrayList < > ();
+            bcase.add("");
+            return bcase;
+        }
+        else if(idx > n){
+            ArrayList < String > bcase = new ArrayList < > ();
+            return bcase;
+        }
+
+        ArrayList < String > path1 = getStairPathsRF(n, idx + 1);
+
+        ArrayList < String > path2 = getStairPathsRF(n, idx + 2);
+
+        ArrayList < String > path3 = getStairPathsRF(n, idx + 3);
+
+        ArrayList < String > paths =  new ArrayList < > ();
+
+
+        for(String str1 : path1)
+            paths.add(1 + str1);
+
+        for(String str2 : path2)
+            paths.add(2 + str2);
+
+        for(String str3 : path3)
+            paths.add(3 + str3);
+
+
+
+        return paths;
+    }
+
+//-----------------------------------------------------------------------
+
 
 }
