@@ -14,6 +14,7 @@ public class Main {
         getSubsequence();
         getKPC();
         getStairPaths();
+        getMazePaths();
     }
 
 
@@ -129,5 +130,49 @@ public class Main {
 
 //-----------------------------------------------------------------------
 
+    public static void getMazePaths() {
+
+        int n = scn.nextInt();
+        int m = scn.nextInt();
+        ArrayList<String> str = getMazePathsRF(1, 1, n, m);
+        System.out.print(str);
+    }
+
+    // sr - source row
+    // sc - source column
+    // dr - destination row
+    // dc - destination column
+    public static ArrayList<String> getMazePathsRF(int sr, int sc, int dr, int dc) {
+
+        if(sr == dr && sc == dc){
+            ArrayList<String> reached = new ArrayList<>();
+            reached.add("");
+            return reached;
+        }
+
+        if(sr > dr || sc > dc){
+            ArrayList<String> blank = new ArrayList<>();
+            return blank;
+        }
+
+
+        ArrayList<String> hpaths = getMazePathsRF(sr, sc + 1, dr, dc);
+        ArrayList<String> vpaths = getMazePathsRF(sr + 1, sc, dr, dc);
+
+        ArrayList<String> paths = new ArrayList<>();
+
+        for(String hpath : hpaths){
+            paths.add('h' + hpath);
+        }
+
+        for(String vpath : vpaths){
+            paths.add('v' + vpath);
+        }
+
+        return paths;
+
+    }
+
+//----------------------------------------------------------------------
 
 }
