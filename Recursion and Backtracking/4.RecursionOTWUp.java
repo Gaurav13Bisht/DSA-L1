@@ -13,6 +13,7 @@ public class Main {
     public static void solved() {
 
         printSubsequence();
+        printKPC();
 
     }
 
@@ -40,6 +41,33 @@ public class Main {
 
 //-------------------------------------------------------------
 
+    public static void printKPC() {
+        Scanner scn = new Scanner(System.in);
+        String str = scn.next();
+        printKPCRF(str, "");
 
+    }
+
+    static String[] codes = {".;","abc","def","ghi","jkl","mno","pqrs","tu","vwx","yz"};
+
+   // !!!!!!!!!!!!!! THIS APPROACH IS LEVELS AND OPTIONS !!!!!!!!!!!!!!
+
+    public static void printKPCRF(String key, String ans) {
+
+        if(key.length() == 0){
+            System.out.println(ans);
+            return;
+        }
+
+        char ch = key.charAt(0);
+
+        String sCode = codes[ch - '0'];
+        for(int i = 0; i < sCode.length(); i++){
+            printKPCRF(key.substring(1), ans + sCode.charAt(i));
+        }
+
+    }
+
+//------------------------------------------------------------------
 
 }
