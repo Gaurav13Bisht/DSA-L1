@@ -14,6 +14,7 @@ public class Main {
 
         printSubsequence();
         printKPC();
+        printStairPaths();
 
     }
 
@@ -69,5 +70,32 @@ public class Main {
     }
 
 //------------------------------------------------------------------
+
+    public static void printStairPaths() {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        printStairPathsRF(n, "");
+    }
+
+    public static void printStairPathsRF(int n, String path) {
+
+        if(n == 0){
+            System.out.println(path);
+            return;
+        }
+        else if(n < 0){
+            return;
+        }
+
+
+        printStairPathsRF(n - 1, path + '1');
+        printStairPathsRF(n - 2, path + '2');
+        printStairPathsRF(n - 3, path + '3');
+
+
+    }
+
+//------------------------------------------------------------------
+
 
 }
