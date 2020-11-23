@@ -15,7 +15,7 @@ public class Main {
         printSubsequence();
         printKPC();
         printStairPaths();
-
+        printMazePaths();
     }
 
 
@@ -97,5 +97,29 @@ public class Main {
 
 //------------------------------------------------------------------
 
+	    public static void printMazePaths() {
+            Scanner scn = new Scanner(System.in);
+            int n = scn.nextInt();
+            int m = scn.nextInt();
+            printMazePathsRF(1, 1, n, m, "");
+	    }
+
+	    // sr - source row
+	    // sc - source column
+	    // dr - destination row
+	    // dc - destination column
+	    public static void printMazePathsRF(int sr, int sc, int dr, int dc, String psf) {
+	        if(sr == dr && sc == dc){
+	            System.out.println(psf);
+	            return;
+	        }
+	        else if(sr > dr || sc > dc){
+	            return;
+	        }
+	        printMazePathsRF(sr, sc + 1, dr,dc, psf + 'h');
+	        printMazePathsRF(sr + 1, sc, dr, dc, psf + 'v');
+	    }
+
+//-----------------------------------------------------------------------
 
 }
