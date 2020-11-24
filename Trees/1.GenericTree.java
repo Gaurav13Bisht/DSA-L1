@@ -1,4 +1,3 @@
-import java.io.*;
 import java.util.*;
 
 class genericTree {
@@ -19,6 +18,7 @@ class genericTree {
     public static void solved() {
         construct();
         display();
+        sizeOfGT();
     }
 
     // static Node root = null;
@@ -72,4 +72,25 @@ class genericTree {
         }
     }
 
+    // -------------------------------------------------------------------------------------
+
+    public static void sizeOfGT() {
+        Node root = null;
+        int[] treeVal = { 10, 20, -1, 30, 50, -1, 60, -1, -1, 40, -1, -1 };
+        Node founderNode = constructFunc(treeVal, root);
+        System.out.println(sizeOfGTFunc(founderNode));
+
+    }
+
+    public static int sizeOfGTFunc(Node node) {
+        int s = 0;
+        for (Node child : node.children) {
+            s += sizeOfGTFunc(child);
+        }
+        s += 1;
+
+        return s;
+    }
+
+    // ----------------------------------------------------------------------------------------
 }
