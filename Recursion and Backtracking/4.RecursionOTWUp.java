@@ -17,6 +17,7 @@ public class Main {
         printStairPaths();
         printMazePaths();
         printMPathsWithJumps();
+        printPermutations();
     }
 
     public static void printSubsequence() {
@@ -148,4 +149,29 @@ public class Main {
     }
 
     // ----------------------------------------------------------------------------
+
+    public static void printPermutations() {
+        Scanner scn = new Scanner(System.in);
+        String str = scn.next();
+
+        printPerRF(str, "");
+
+    }
+
+    public static void printPerRF(String str, String ans) {
+        if (str.length() == 0) {
+            System.out.println(ans);
+            return;
+        }
+
+        for (int cpos = 0; cpos < str.length(); cpos++) {
+
+            String temp = str.substring(0, cpos) + str.substring(cpos + 1);
+            printPerRF(temp, ans + str.charAt(cpos));
+
+        }
+    }
+
+    // ----------------------------------------------------------------------------------
+
 }
