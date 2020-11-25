@@ -18,6 +18,7 @@ public class Main {
         printMazePaths();
         printMPathsWithJumps();
         printPermutations();
+        printEncodings();
     }
 
     public static void printSubsequence() {
@@ -174,4 +175,41 @@ public class Main {
 
     // ----------------------------------------------------------------------------------
 
+    public static void printEncodings() {
+        Scanner scn = new Scanner(System.in);
+        String str = scn.next();
+        printEncodingsRF(str, "");
+    }
+
+    // MY APPROACH WHICH I THINK IS SIMPLER
+
+    static String codes = "0abcdefghijklmnopqrstuvwxyz";
+
+    public static void printEncodingsRF(String str, String ans) {
+        if (str.length() == 0) {
+            System.out.println(ans);
+            return;
+        }
+
+        for (int groupOf = 0; groupOf < str.length(); groupOf++) {
+
+            String nextStr = str.substring(groupOf + 1);
+
+            String currKey = str.substring(0, groupOf + 1);
+
+            int icurrKey = Integer.parseInt(currKey);
+
+            if (icurrKey == 0 || icurrKey > 26) {
+                return;
+            }
+
+            // char currCode = codes.charAt(icurrKey);
+            char currCode = (char) ('a' + icurrKey - 1);
+
+            printEncodingsRF(nextStr, ans + currCode);
+
+        }
+    }
+
+    // ----------------------------------------------------------------
 }
