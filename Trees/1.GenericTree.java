@@ -19,6 +19,7 @@ class genericTree {
         construct();
         display();
         sizeOfGT();
+        heightOfGT();
     }
 
     // static Node root = null;
@@ -93,4 +94,25 @@ class genericTree {
     }
 
     // ----------------------------------------------------------------------------------------
+
+    public static void heightOfGT() { // Based on no. of EDGES from the root
+        Node root = null;
+        int[] treeVal = { 10, 20, -1, 30, 50, -1, 60, -1, -1, 40, -1, -1 };
+        Node founderNode = constructFunc(treeVal, root);
+        System.out.println(heightOfGTFunc(founderNode));
+
+    }
+
+    private static int heightOfGTFunc(Node node) {
+        int h = -1;
+        for (Node child : node.children) {
+            int th = heightOfGTFunc(child);
+            h = Math.max(h, th);
+        }
+        h += 1;
+        return h;
+    }
+
+    // ----------------------------------------------------------------------------------------------
+
 }
