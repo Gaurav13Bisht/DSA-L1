@@ -50,4 +50,50 @@ public class Main {
     }
 
     // ----------------------------------------------------------------
+
+    public static void printTargetSumSubsets() {
+
+        int n = scn.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = scn.nextInt();
+        }
+        int tar = scn.nextInt();
+        printTargetSumSubsetsRF(arr, 0, "", 0, tar);
+
+    }
+
+    // set is the subset
+    // sos is sum of subset
+    // tar is target
+    public static void printTargetSumSubsetsRF(int[] arr, int idx, String set, int sos, int tar) {
+
+        /*
+         * if (sos > tar) { return; }
+         * 
+         * if (sos == tar) { if(idx < arr.length){ if(arr[idx] == 0){
+         * System.out.println(set + 0 + ", ."); System.out.println(set + "."); return; }
+         * printTargetSumSubsetsRF(arr, idx + 1, set, sos, tar); return;
+         * 
+         * } else { System.out.println(set + "."); return; }
+         * 
+         * }
+         * 
+         * 
+         * for (int i = idx; idx < arr.length; idx++) { printTargetSumSubsetsRF(arr, idx
+         * + 1, set + arr[idx] + ", ", sos + arr[idx], tar); }
+         */
+        if (sos > tar) {
+            return;
+        }
+        if (idx == arr.length) {
+            if (sos == tar) {
+                System.out.println(set + ".");
+            }
+            return;
+        }
+
+        printTargetSumSubsetsRF(arr, idx + 1, set + arr[idx] + ", ", sos + arr[idx], tar);
+        printTargetSumSubsetsRF(arr, idx + 1, set, sos, tar);
+    }
 }
