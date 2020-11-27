@@ -13,6 +13,8 @@ public class Main {
     public static void solved() {
 
         floodfill();
+        printTargetSumSubsets();
+        nQueens();
     }
 
     public static void floodfill() {
@@ -96,4 +98,57 @@ public class Main {
         printTargetSumSubsetsRF(arr, idx + 1, set + arr[idx] + ", ", sos + arr[idx], tar);
         printTargetSumSubsetsRF(arr, idx + 1, set, sos, tar);
     }
+
+    // ---------------------------------------------------------------------------------------
+
+    public static void nQueens() {
+
+        int n = scn.nextInt();
+        int[][] chess = new int[n][n];
+        printNQueens(chess, "", 0);
+
+    }
+
+    public static void printNQueens(int[][] chess, String qsf, int row) {
+
+        if (row == chess.length) {
+            System.out.println(qsf + ".");
+        }
+
+        for (int j = 0; j < chess.length; j++) {
+            if (IsPlaceFineforQueen(chess, row, j) == true) {
+                chess[row][j] = 1;
+
+                printNQueens(chess, qsf + row + "-" + j + ", ", row + 1);
+
+                chess[row][j] = 0;
+            }
+        }
+
+    }
+
+    public static boolean IsPlaceFineforQueen(int[][] chess, int row, int col) {
+
+        for (int i = row - 1; i >= 0; i--) {
+            if (chess[i][col] == 1)
+                return false;
+        }
+
+        for (int i = row - 1, j = col + 1; i >= 0 && j < chess.length; i--, j++) {
+            if (chess[i][j] == 1)
+                return false;
+
+        }
+
+        for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
+            if (chess[i][j] == 1)
+                return false;
+
+        }
+
+        return true;
+    }
+
+    // -------------------------------------------------------------------------------
+
 }
