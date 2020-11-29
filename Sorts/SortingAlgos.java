@@ -12,6 +12,7 @@ class SortingAlgos {
 
     public static void solved() {
         sorts1();
+        sorts2();
     }
 
     // used for swapping ith and jth elements of array
@@ -109,5 +110,56 @@ class SortingAlgos {
 
     }
 
-    // -----------------------------------------------------------------------------------------
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static void sorts2() {
+
+        int n = scn.nextInt();
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = scn.nextInt();
+        }
+        int m = scn.nextInt();
+        int[] b = new int[m];
+        for (int i = 0; i < m; i++) {
+            b[i] = scn.nextInt();
+        }
+        int[] mergedArray = mergeTwoSortedArrays(a, b);
+        print(mergedArray);
+    }
+
+    public static int[] mergeTwoSortedArrays(int[] a, int[] b) {
+        int[] merged = new int[a.length + b.length];
+        int k = 0, i = 0, j = 0;
+
+        while (i < a.length && j < b.length) {
+
+            if (a[i] < b[j]) {
+                merged[k] = a[i];
+                i++;
+
+            } else {
+                merged[k] = b[j];
+                j++;
+            }
+
+            k++;
+        }
+
+        while (i != a.length) {
+            merged[k] = a[i];
+            i++;
+            k++;
+        }
+
+        while (j != b.length) {
+            merged[k] = b[j];
+            j++;
+            k++;
+        }
+        return merged;
+    }
+
+    // ------------------------------------------------------------------------------------------
+
 }
