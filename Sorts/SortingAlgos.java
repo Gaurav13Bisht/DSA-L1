@@ -11,7 +11,7 @@ class SortingAlgos {
     }
 
     public static void solved() {
-        sorts1();
+        sorts1(); // BUBBLE , SELECTION AND INSERTION SORT
         sorts2();
     }
 
@@ -116,6 +116,13 @@ class SortingAlgos {
 
         int n = scn.nextInt();
         int[] a = new int[n];
+
+        // mergeSort();
+        return;
+
+        // FOR MERGE TWO SORTED ARRAYS COMMENT return TOO AND FOR MERGE SORT UNCOMMENT-
+        // -mergeSort();
+
         for (int i = 0; i < n; i++) {
             a[i] = scn.nextInt();
         }
@@ -128,7 +135,14 @@ class SortingAlgos {
         print(mergedArray);
     }
 
+    // -----------------------------------------------------------------------------------------------
+
     public static int[] mergeTwoSortedArrays(int[] a, int[] b) {
+        // System.out.println("Merging these two arrays ");
+        // System.out.print("left array -> ");
+        // print(a);
+        // System.out.print("right array -> ");
+        // print(b);
         int[] merged = new int[a.length + b.length];
         int k = 0, i = 0, j = 0;
 
@@ -161,5 +175,36 @@ class SortingAlgos {
     }
 
     // ------------------------------------------------------------------------------------------
+
+    public static void mergeSort() {
+
+        int n = scn.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = scn.nextInt();
+        }
+        int[] sa = mergeSortFunc(arr, 0, arr.length - 1);
+        System.out.print("Sorted Array -> ");
+        print(sa);
+
+    }
+
+    public static int[] mergeSortFunc(int[] arr, int lo, int hi) {
+
+        if (lo == hi) {
+            int[] last = new int[1];
+            last[0] = arr[lo];
+            return last;
+        }
+        int mid = (lo + hi) / 2;
+        int[] fsh = mergeSortFunc(arr, lo, mid);
+        int[] ssh = mergeSortFunc(arr, mid + 1, hi);
+
+        int[] fsa = mergeTwoSortedArrays(fsh, ssh);
+
+        return fsa;
+    }
+
+    // -------------------------------------------------------------------------------------------
 
 }
