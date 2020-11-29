@@ -1,14 +1,8 @@
 import java.util.*;
 
-class genericTree {
+class SortingAlgos {
 
     static Scanner scn = new Scanner(System.in);
-
-    public static void print(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
-        }
-    }
 
     public static void main(String[] args) {
         solved();
@@ -17,34 +11,7 @@ class genericTree {
     }
 
     public static void solved() {
-        bubbleSort();
-    }
-
-    public static void bubbleSort() {
-        Scanner scn = new Scanner(System.in);
-        int n = scn.nextInt();
-        int[] arr = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = scn.nextInt();
-        }
-        bubbleSortFunc(arr);
-        print(arr);
-    }
-
-    public static void bubbleSortFunc(int[] arr) {
-        int size = arr.length;
-
-        for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = 0; j < size - 1; j++) {
-                if (!isSmaller(arr, j + 1, j))
-                    continue;
-                else
-                    swap(arr, j + 1, j);
-
-            }
-            size--;
-        }
-
+        sorts1();
     }
 
     // used for swapping ith and jth elements of array
@@ -65,6 +32,56 @@ class genericTree {
         }
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static void sorts1() {
+
+        int n = scn.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = scn.nextInt();
+        }
+        // bubbleSort(arr);
+        // selectionSort(arr);
+        print(arr);
+    }
+
+    // --------------------------------------------------------------------------------------------
+
+    public static void bubbleSort(int[] arr) {
+        int size = arr.length;
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = 0; j < size - 1; j++) {
+                if (!isSmaller(arr, j + 1, j))
+                    continue;
+                else
+                    swap(arr, j + 1, j);
+
+            }
+            size--;
+        }
+
+    }
+
     // ----------------------------------------------------------------------------------------------
+
+    public static void selectionSort(int[] arr) {
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            int min = i;
+
+            for (int j = i + 1; j < arr.length; j++) {
+                if (isSmaller(arr, j, min))
+                    min = j;
+
+            }
+
+            swap(arr, i, min);
+
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------
 
 }
