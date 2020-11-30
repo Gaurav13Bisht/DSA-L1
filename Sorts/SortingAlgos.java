@@ -142,13 +142,14 @@ class SortingAlgos {
          * Math.min(min, arr[i]); countSort(arr, min, max); print(arr);
          */
 
-        int m = scn.nextInt();
-        int[] b = new int[m];
-        for (int i = 0; i < m; i++) {
-            b[i] = scn.nextInt();
-        }
-        int[] mergedArray = mergeTwoSortedArrays(a, b);
-        print(mergedArray);
+        // radixSort(a);
+        // print(a);
+
+        /*
+         * int m = scn.nextInt(); int[] b = new int[m]; for (int i = 0; i < m; i++) {
+         * b[i] = scn.nextInt(); } int[] mergedArray = mergeTwoSortedArrays(a, b);
+         * print(mergedArray);
+         */
     }
 
     // -----------------------------------------------------------------------------------------------
@@ -318,4 +319,44 @@ class SortingAlgos {
 
     // ------------------------------------------------------------------------------------------
 
+    public static void radixSort(int[] arr) {
+        Scanner scn = new Scanner(System.in);
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < arr.length; i++) {
+            max = Math.max(max, arr[i]);
+        }
+        int exp = 1;
+        while (exp <= max) {
+            countSort2(arr, exp);
+            exp *= 10;
+        }
+    }
+
+    public static void countSort2(int[] arr, int exp) {
+        int[] freq = new int[10];
+        for (int i = 0; i < arr.length; i++) {
+            freq[arr[i] / exp % 10]++;
+        }
+        int prefixsum = 0;
+        for (int i = 0; i < freq.length; i++) {
+            prefixsum += freq[i];
+            freq[i] = prefixsum;
+            freq[i]--;
+        }
+
+        int[] csorted = new int[arr.length];
+        for (int i = arr.length - 1; i >= 0; i--) {
+            int idx = freq[arr[i] / exp % 10];
+            csorted[idx] = arr[i];
+            freq[arr[i] / exp % 10]--;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = csorted[i];
+        }
+
+        System.out.print("After sorting on " + exp + " place -> ");
+        print(arr);
+    }
+
+    // -------------------------------------------------------------------------------
 }
