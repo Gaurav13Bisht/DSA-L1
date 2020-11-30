@@ -133,6 +133,9 @@ class SortingAlgos {
         // quickSort(a, 0, arr.length - 1);
         // print(a);
 
+        // int k = scn.nextInt();
+        // System.out.println(quickSelect(arr, 0, arr.length - 1, k - 1));
+
         int m = scn.nextInt();
         int[] b = new int[m];
         for (int i = 0; i < m; i++) {
@@ -260,4 +263,27 @@ class SortingAlgos {
     }
 
     // -----------------------------------------------------------------------------
+
+    public static int quickSelect(int[] arr, int lo, int hi, int k) {
+        if (lo > hi)
+            return 0;
+
+        int pivot = partition2(arr, arr[hi], lo, hi);
+        if (pivot == k)
+            return arr[pivot];
+        else {
+
+            if (pivot > k)
+                return quickSelect(arr, lo, pivot - 1, k);
+            else {
+
+                return quickSelect(arr, pivot + 1, hi, k);
+            }
+
+        }
+
+    }
+
+    // -------------------------------------------------------------------------------------
+
 }
