@@ -136,6 +136,12 @@ class SortingAlgos {
         // int k = scn.nextInt();
         // System.out.println(quickSelect(arr, 0, arr.length - 1, k - 1));
 
+        /*
+         * int max = Integer.MIN_VALUE; int min = Integer.MAX_VALUE; for (int i = 0; i <
+         * n; i++) { arr[i] = scn.nextInt(); max = Math.max(max, arr[i]); min =
+         * Math.min(min, arr[i]); countSort(arr, min, max); print(arr);
+         */
+
         int m = scn.nextInt();
         int[] b = new int[m];
         for (int i = 0; i < m; i++) {
@@ -285,5 +291,31 @@ class SortingAlgos {
     }
 
     // -------------------------------------------------------------------------------------
+
+    public static void countSort(int[] arr, int min, int max) {
+        int[] freq = new int[max - min + 1];
+        for (int i = 0; i < arr.length; i++) {
+            freq[arr[i] - min]++;
+        }
+        int prefixsum = 0;
+        for (int i = 0; i < freq.length; i++) {
+            prefixsum += freq[i];
+            freq[i] = prefixsum;
+            freq[i]--;
+        }
+
+        int[] csorted = new int[arr.length];
+        for (int i = arr.length - 1; i >= 0; i--) {
+            int idx = freq[arr[i] - min];
+            csorted[idx] = arr[i];
+            freq[arr[i] - min]--;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = csorted[i];
+        }
+
+    }
+
+    // ------------------------------------------------------------------------------------------
 
 }
