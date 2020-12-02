@@ -362,7 +362,7 @@ class SortingAlgos {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static void sortsUsedQues() {
-        Scanner scn = new Scanner(System.in);
+
         int n = scn.nextInt();
         String[] arr = new String[n];
         for (int i = 0; i < n; i++) {
@@ -371,6 +371,9 @@ class SortingAlgos {
         }
         sortDates(arr);
         print(arr);
+
+        sort01(); // sorts 0's and 1's array (pattern : 0000.....11111...)
+
     }
 
     // ---------------------------------------------------------------------------------------------------
@@ -415,5 +418,28 @@ class SortingAlgos {
     }
 
     // -------------------------------------------------------------------------------------------
+
+    public static void sort01() {
+
+        int n = scn.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = scn.nextInt();
+        }
+
+        int i = 0, j = 0;
+
+        while (i < arr.length) {
+            if (arr[i] == 1)
+                i++;
+
+            else {
+                swap(arr, i, j);
+                i++;
+                j++;
+            }
+        }
+        print(arr);
+    }
 
 }
