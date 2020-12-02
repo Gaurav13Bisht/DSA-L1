@@ -378,6 +378,9 @@ class SortingAlgos {
 
         targetSumPair(); // to find pair of two no.s whose sum equals given target.
 
+        findPivot(); // to find the pivot at which the sorted array is rotated (Using binary search
+                     // algo)
+
     }
 
     // ---------------------------------------------------------------------------------------------------
@@ -532,4 +535,26 @@ class SortingAlgos {
     // }
 
     // ------------------------------------------------------------------------------------------------
+
+    public static void findPivot() {
+
+        int n = scn.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = scn.nextInt();
+        }
+
+        int lo = 0, hi = arr.length - 1;
+        while (lo + 1 != hi) {
+            int mid = (lo + hi) / 2;
+            if (arr[mid] < arr[hi])
+                hi = mid;
+            else
+                lo = mid;
+        }
+        int pivot = (arr[lo] < arr[hi] ? arr[lo] : arr[hi]);
+        System.out.println(pivot);
+    }
+
+    // ---------------------------------------------------------------------------------------------
 }
