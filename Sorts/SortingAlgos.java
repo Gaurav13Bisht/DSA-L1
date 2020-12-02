@@ -13,6 +13,7 @@ class SortingAlgos {
     public static void solved() {
         sorts1(); // BUBBLE , SELECTION AND INSERTION SORT
         sorts2();
+        sortsUsedQues();
     }
 
     // used for swapping ith and jth elements of array
@@ -358,5 +359,61 @@ class SortingAlgos {
         print(arr);
     }
 
-    // -------------------------------------------------------------------------------
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static void sortsUsedQues() {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        String[] arr = new String[n];
+        for (int i = 0; i < n; i++) {
+            String str = scn.next();
+            arr[i] = str;
+        }
+        sortDates(arr);
+        print(arr);
+    }
+
+    // ---------------------------------------------------------------------------------------------------
+
+    public static void sortDates(String[] arr) {
+        countSort(arr, 1000000, 100, 32); // Days // range is 1 - 31 but if we pass 31 then 0 - 30 will be the range in
+                                          // freq array }
+        countSort(arr, 10000, 100, 13); // Months
+        countSort(arr, 1, 10000, 2501); // Years
+    }
+
+    public static void countSort(String[] arr, int div, int mod, int range) {
+
+        int[] freq = new int[range];
+        for (int i = 0; i < arr.length; i++) {
+            freq[Integer.parseInt(arr[i], 10) / div % mod]++;
+
+            // Since the arr[i] is in the form of String, so we have to convert
+            // it to integer first and then often if arr[i] have a no. starting
+            // with 0 e.g. 05 then the machine convert it into octal base so we
+            // pass 10 with it to instruct the machine that it is a decimal no.
+
+        }
+
+        int prefixsum = 0;
+        for (int i = 0; i < freq.length; i++) {
+            prefixsum += freq[i];
+            freq[i] = prefixsum;
+            freq[i]--;
+        }
+
+        String[] csorted = new String[arr.length];
+        for (int i = arr.length - 1; i >= 0; i--) {
+            int idx = freq[Integer.parseInt(arr[i], 10) / div % mod];
+            csorted[idx] = arr[i];
+            freq[Integer.parseInt(arr[i], 10) / div % mod]--;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = csorted[i];
+        }
+
+    }
+
+    // -------------------------------------------------------------------------------------------
+
 }
