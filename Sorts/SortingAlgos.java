@@ -375,6 +375,9 @@ class SortingAlgos {
         sort01(); // sorts 0's and 1's array (pattern : 0000.....11111...)
 
         sort012();
+
+        targetSumPair(); // to find pair of two no.s whose sum equals given target.
+
     }
 
     // ---------------------------------------------------------------------------------------------------
@@ -476,6 +479,57 @@ class SortingAlgos {
         }
         print(arr);
     }
+
+    // ------------------------------------------------------------------------------------------------
+
+    public static void targetSumPair() {
+
+        int n = scn.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = scn.nextInt();
+        }
+        int target = scn.nextInt();
+
+        /*
+         * Using merge Sort :
+         * 
+         * int[] temp = new int[arr.length]; temp = mergeSort(arr, 0, arr.length - 1);
+         * for(int i = 0; i < arr.length; i++){ arr[i] = temp[i]; }
+         */
+
+        Arrays.sort(arr); // WILL SORT THE ARRAY IN O(nlogn)
+
+        int i = 0, j = arr.length - 1;
+        while (i != j) {
+            if (arr[i] + arr[j] == target) {
+                System.out.println(arr[i] + ", " + arr[j]);
+                i++;
+                j--;
+            } else if (arr[i] + arr[j] < target)
+                i++;
+
+            else
+                j--;
+        }
+
+    }
+
+    // public static int[] mergeSort(int[] arr, int lo, int hi) {
+
+    // if (lo == hi) {
+    // int[] last = new int[1];
+    // last[0] = arr[lo];
+    // return last;
+    // }
+    // int mid = (lo + hi) / 2;
+    // int[] fsh = mergeSort(arr, lo, mid);
+    // int[] ssh = mergeSort(arr, mid + 1, hi);
+
+    // int[] fsa = mergeTwoSortedArrays(fsh, ssh);
+
+    // return fsa;
+    // }
 
     // ------------------------------------------------------------------------------------------------
 }
