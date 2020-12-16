@@ -17,6 +17,9 @@ public class stack {
         largestAreaHistogram();
         slidingWindowMax();
         infixEvaluation();
+        infixConversion();
+        postfixEvalAndCoversion();
+        prefixEvalAndConversion();
     }
 
     public static void display(int[] a) {
@@ -367,4 +370,174 @@ public class stack {
     }
 
     // -----------------------------------------------------------------------------------
+
+    public static void infixConversion() {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String exp = br.readLine();
+
+        Stack<String> prefix = new Stack<>();
+        Stack<String> postfix = new Stack<>();
+        Stack<Character> oprator = new Stack<>();
+
+        for (int i = 0; i < exp.length(); i++) {
+            char ch = exp.charAt(i);
+
+            if (ch >= '0' && ch <= '9' || ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z') {
+                prefix.push(ch + "");
+                postfix.push(ch + "");
+            } else if (ch == '(') {
+                oprator.push(ch);
+            } else if (ch == ')') {
+                while (oprator.peek() != '(') {
+                    char opd = oprator.pop();
+
+                    String preVal2 = prefix.pop();
+                    String preVal1 = prefix.pop();
+                    prefix.push(opd + preVal1 + preVal2);
+
+                    String postVal2 = postfix.pop();
+                    String postVal1 = postfix.pop();
+                    postfix.push(postVal1 + postVal2 + opd);
+                }
+                oprator.pop();
+            } else if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
+                while (oprator.size() > 0 && oprator.peek() != '(' && precedence(ch) <= precedence(oprator.peek())) {
+                    char opd = oprator.pop();
+
+                    String preVal2 = prefix.pop();
+                    String preVal1 = prefix.pop();
+                    prefix.push(opd + preVal1 + preVal2);
+
+                    String postVal2 = postfix.pop();
+                    String postVal1 = postfix.pop();
+                    postfix.push(postVal1 + postVal2 + opd);
+                }
+                oprator.push(ch);
+            }
+
+        }
+
+        while (oprator.size() != 0) {
+            char opd = oprator.pop();
+
+            String preVal2 = prefix.pop();
+            String preVal1 = prefix.pop();
+            prefix.push(opd + preVal1 + preVal2);
+
+            String postVal2 = postfix.pop();
+            String postVal1 = postfix.pop();
+            postfix.push(postVal1 + postVal2 + opd);
+        }
+
+        System.out.println(postfix.peek());
+        System.out.print(prefix.peek());
+    }
+
+    public static int precedence(char input) {
+
+        if (input == '-' || input == '+')
+            return 1;
+
+        else if (input == '*' || input == '/')
+            return 2;
+
+        else
+            return 2;
+    }
+
+    /*
+     * public static String opnPre(int v1, int v2, char operatr) {
+     * 
+     * if (operatr == '-') return "-"v1v2;
+     * 
+     * else if (operatr == '+') return v1 + v2;
+     * 
+     * else if (operatr == '*') return v1 * v2;
+     * 
+     * else return v1 / v2;
+     * 
+     * }
+     */
+    // ----------------------------------------------------------------------------------------
+
+    public static void postfixEvalAndCoversion() {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String exp = br.readLine();
+
+        Stack<String> infix = new Stack<>();
+        Stack<String> prefix = new Stack<>();
+        Stack<Integer> evaluation = new Stack<>();
+
+        for (int i = 0; i < exp.length(); i++) {
+            char ch = exp.charAt(i);
+
+            if (ch >= '0' && ch <= '9' || ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z') {
+                evaluation.push(ch - '0');
+                prefix.push(ch + "");
+                infix.push(ch + "");
+
+            } else if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
+
+                String inVal2 = infix.pop();
+                String inVal1 = infix.pop();
+                infix.push('(' + inVal1 + ch + inVal2 + ')');
+
+                String preVal2 = prefix.pop();
+                String preVal1 = prefix.pop();
+                prefix.push(ch + preVal1 + preVal2);
+
+                int eval2 = evaluation.pop();
+                int eval1 = evaluation.pop();
+                evaluation.push(operation(eval1, eval2, ch));
+            }
+
+        }
+
+        System.out.println(evaluation.peek());
+        System.out.println(infix.peek());
+        System.out.print(prefix.peek());
+    }
+
+    // ---------------------------------------------------------------------------------------------
+
+    public static void prefixEvalAndConversion() {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String exp = br.readLine();
+
+        Stack<String> infix = new Stack<>();
+        Stack<String> postfix = new Stack<>();
+        Stack<Integer> evaluation = new Stack<>();
+
+        for (int i = exp.length() - 1; i >= 0; i--) {
+            char ch = exp.charAt(i);
+
+            if (ch >= '0' && ch <= '9' || ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z') {
+                evaluation.push(ch - '0');
+                postfix.push(ch + "");
+                infix.push(ch + "");
+
+            } else {
+
+                String inVal1 = infix.pop();
+                String inVal2 = infix.pop();
+                infix.push('(' + inVal1 + ch + inVal2 + ')');
+
+                String postVal1 = postfix.pop();
+                String postVal2 = postfix.pop();
+                postfix.push(postVal1 + postVal2 + ch);
+
+                int eval1 = evaluation.pop();
+                int eval2 = evaluation.pop();
+                evaluation.push(operation(eval1, eval2, ch));
+            }
+
+        }
+
+        System.out.println(evaluation.peek());
+        System.out.println(infix.peek());
+        System.out.print(postfix.peek());
+    }
+
+    // --------------------------------------------------------------------------------------------------
+
 }
