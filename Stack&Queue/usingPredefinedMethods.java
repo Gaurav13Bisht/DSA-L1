@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class stack {
+public class usingPredefinedMethods {
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -20,6 +20,9 @@ public class stack {
         infixConversion();
         postfixEvalAndCoversion();
         prefixEvalAndConversion();
+        findCelebrity();
+        mergeOverlappingIntervals();
+        smallestNumberFollowingPattern();
     }
 
     public static void display(int[] a) {
@@ -540,4 +543,197 @@ public class stack {
 
     // --------------------------------------------------------------------------------------------------
 
+    public static void findCelebrity() {
+        // write your code here
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+        int[][] arr = new int[n][n];
+
+        for (int j = 0; j < n; j++) {
+            String line = br.readLine();
+            for (int k = 0; k < n; k++) {
+                arr[j][k] = line.charAt(k) - '0';
+            }
+        }
+
+        findCelebrityFunc(arr);
+
+    }
+
+    public static void findCelebrityFunc(int[][] arr) {
+        // if a celebrity is there print it's index (not position), if there is not then
+        // print "none"
+        Stack<Integer> st = new Stack<>();
+        for (int i = 0; i < arr.length; i++) {
+            st.push(i);
+        }
+        while (st.size() != 1) {
+            int val1 = st.pop();
+            int val2 = st.pop();
+            if (knowsOrNot(arr, val1, val2))
+                st.push(val2);
+            else
+                st.push(val1);
+        }
+
+        int potentialCeleb = st.peek();
+
+        for (int i = 0; i < arr.length; i++) {
+            if (i == potentialCeleb)
+                continue;
+            else if (arr[potentialCeleb][i] == 1 || arr[i][potentialCeleb] == 0) {
+                System.out.print("none");
+                return;
+            }
+        }
+
+        System.out.print(potentialCeleb);
+
+    }
+
+    public static boolean knowsOrNot(int[][] arr, int v1, int v2) {
+        if (arr[v1][v2] == 1)
+            return true;
+        else
+            return false;
+
+    }
+
+    // ---------------------------------------------------------------------------------------------
+
+    public static void mergeOverlappingIntervals() {
+        // write your code here
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+        int[][] arr = new int[n][2];
+
+        for (int j = 0; j < n; j++) {
+            String line = br.readLine();
+            arr[j][0] = Integer.parseInt(line.split(" ")[0]);
+            arr[j][1] = Integer.parseInt(line.split(" ")[1]);
+        }
+
+        mergeOverlappingIntervalsFunc(arr);
+    }
+
+    public static void mergeOverlappingIntervalsFunc(int[][] arr) {
+        // merge overlapping intervals and print in increasing order of start time
+
+        quickSort(arr, 0, arr.length - 1);
+
+        Stack<Integer> start = new Stack<>();
+        Stack<Integer> end = new Stack<>();
+
+        start.push(arr[0][0]);
+        end.push(arr[0][1]);
+
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i][0] <= end.peek()) {
+                if (arr[i][1] > end.peek()) {
+                    end.pop();
+                    end.push(arr[i][1]);
+                }
+            } else {
+                start.push(arr[i][0]);
+                end.push(arr[i][1]);
+            }
+        }
+
+        recurPrint(start, end);
+
+    }
+
+    public static void recurPrint(Stack<Integer> start, Stack<Integer> end) {
+
+        if (start.size() == 0)
+            return;
+
+        int st = start.pop();
+        int en = end.pop();
+        recurPrint(start, end);
+
+        System.out.println(st + " " + en);
+        return;
+
+    }
+
+    public static void quickSort(int[][] arr, int lo, int hi) {
+
+        if (lo > hi) {
+            return;
+        }
+
+        int pivot = partition(arr, arr[hi][0], lo, hi);
+        quickSort(arr, lo, pivot - 1);
+        quickSort(arr, pivot + 1, hi);
+
+    }
+
+    public static int partition(int[][] arr, int pivot, int lo, int hi) {
+
+        int i = lo, j = lo;
+        while (i <= hi) {
+            if (arr[i][0] <= pivot) {
+                swap(arr, i, j);
+                i++;
+                j++;
+            } else {
+                i++;
+            }
+        }
+
+        return (j - 1);
+    }
+
+    // used for swapping ith and jth elements of array
+    public static void swap(int[][] arr, int i, int j) {
+
+        int temp1 = arr[i][0];
+        int temp2 = arr[i][1];
+        arr[i][0] = arr[j][0];
+        arr[i][1] = arr[j][1];
+        arr[j][0] = temp1;
+        arr[j][1] = temp2;
+    }
+
+    // -------------------------------------------------------------------------------------------------
+
+    public static void smallestNumberFollowingPattern() {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String str = br.readLine();
+
+        Stack<Integer> st = new Stack<>();
+        st.push(1);
+        int[] pattern = new int[str.length() + 1];
+
+        for (int s = 0; s < str.length(); s++) {
+            if (str.charAt(s) == 'd')
+                continue;
+            else {
+                pattern[s] = st.peek();
+                st.pop();
+                st.push(pattern[s] + 1);
+
+                for (int j = s - 1; j >= 0 && str.charAt(j) == 'd'; j--) {
+                    pattern[j] = st.peek();
+                    st.pop();
+                    st.push(pattern[j] + 1);
+                }
+
+            }
+        }
+
+        if (str.charAt(str.length() - 1) == 'i') {
+            pattern[pattern.length - 1] = st.peek();
+        } else {
+            pattern[pattern.length - 1] = st.peek();
+            pattern[pattern.length - 2] = st.peek() + 1;
+        }
+
+        for (int s = 0; s < pattern.length; s++) {
+            System.out.print(pattern[s]);
+
+        }
+    }
+    // ----------------------------------------------------------------------------------------
 }
